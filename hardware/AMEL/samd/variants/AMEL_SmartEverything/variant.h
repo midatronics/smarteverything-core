@@ -78,9 +78,6 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_RED          (45u)
-#define PIN_LED_GREEN        (46u)
-#define PIN_LED_BLUE         (47u)
 #define PIN_LED_13           PIN_LED_GREEN
 #define PIN_LED_RXL          (26u)
 #define PIN_LED_TXL          (27u)
@@ -93,15 +90,10 @@ extern "C"
 #define PIN_IO_EXT_RST      (48u)
 #define PIN_IO_EXT_INT      (49u)
 
-
+//TODO Mick shall this remain ????
 // Step-Up Power
 #define PIN_EXT_PWR         (50u)
 #define PIN_REG_ON          (51u)
-
-// User Button
-#define PIN_SME_BUTTON1        (41u)
-#define PIN_SME_BUTTON2        (42u)
-
 
 /*
  * Analog pins
@@ -189,27 +181,6 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PIN_USB_DP           (30ul)
 
 /*
-    RGB wrapper function
-    These functions has been created for a more comfortable use 
-      because internally wrap the inversion of the HIGH, LOW meaning.
-    Using these function it remain the same Arduino User Experience to light a led.
-
-    parameter:
-    value = the light intensity. It could be 
-            HIGH   = light to the maximum level
-            LOW    = switch off the Led
-            1..255 = pwm value for different level of light
- */
-void ledGreenLight(uint32_t value);
-void ledRedLight(uint32_t value);
-void ledBlueLight(uint32_t value);
-
-/*
-    Wrapper to flash the RGB Led light red or blue or green for X milliseconds
-*/
-void flashRGBLed(uint32_t color, uint32_t time_in_ms);
-
-/*
     Yellow Led wrapper function
     These functions has been created for a more comfortable use 
       because internally wrap the inversion of the HIGH, LOW meaning
@@ -222,15 +193,7 @@ void flashRGBLed(uint32_t color, uint32_t time_in_ms);
 void ledYellowOneLight(uint32_t value);
 void ledYellowTwoLight(uint32_t value);
 
-/*
-    User Button wrapper function.
 
-    return:
-    1 = button PRESSED
-    0 = button RELEASED
-*/
-int isButtonOnePressed(void);
-int isButtonTwoPressed(void);
 
 
 /*
@@ -318,10 +281,6 @@ extern Uart SigFox;
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
-
-#define LED_GREEN_INIT  pinMode(PIN_LED_GREEN, OUTPUT)
-#define LED_RED_INIT    pinMode(PIN_LED_RED, OUTPUT)
-#define LED_BLUE_INIT   pinMode(PIN_LED_BLUE, OUTPUT)
 
 #define LED_YELLOW_TWO_INIT  pinMode(PIN_LED_RXL, OUTPUT)
 #define LED_YELLOW_ONE_INIT  pinMode(PIN_LED_TXL, OUTPUT)

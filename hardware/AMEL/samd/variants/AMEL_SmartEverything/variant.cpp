@@ -305,55 +305,6 @@ void ledYellowOneLight(uint32_t value)   {
     }
 }
 
-void ledGreenLight(uint32_t value) {
-    if (value == HIGH) {
-        digitalWrite(PIN_LED_GREEN, LOW);
-    } else if (value == LOW) {
-        digitalWrite(PIN_LED_GREEN, HIGH);
-    } else {
-        analogWrite(PIN_LED_GREEN, 255-value);   // in case of PWM
-    }
-}
-
-void ledRedLight(uint32_t value)   {
-    if (value == HIGH) {
-        digitalWrite(PIN_LED_RED, LOW);
-    } else if (value == LOW) {
-        digitalWrite(PIN_LED_RED, HIGH);
-    } else {
-        analogWrite(PIN_LED_RED, 255-value);   // in case of PWM
-    }
-}
-
-void ledBlueLight(uint32_t value) {
-    if (value == HIGH) {
-        digitalWrite(PIN_LED_BLUE, LOW);
-    } else if (value == LOW) {
-        digitalWrite(PIN_LED_BLUE, HIGH);
-    } else {
-        analogWrite(PIN_LED_BLUE, 255-value);   // in case of PWM
-    }
-}
-
-void flashRGBLed(uint32_t color, uint32_t time_in_ms) {
-    // If the color is not a valid one, do nothing
-    if (color == PIN_LED_GREEN || color == PIN_LED_BLUE || color == PIN_LED_RED) {
-        digitalWrite(color, LOW);
-        delay(time_in_ms);
-        digitalWrite(color, HIGH);
-    }
-}
-
-int isButtonOnePressed(void) {
-    return !digitalRead(PIN_SME_BUTTON1);
-}
-
-
-int isButtonTwoPressed(void) {
-    return !digitalRead(PIN_SME_BUTTON2);
-}
-
-
 bool isOnBattery(void) {   
     return !digitalRead(PIN_EXT_PWR);
 }
