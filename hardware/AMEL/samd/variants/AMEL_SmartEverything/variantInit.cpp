@@ -22,7 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 
-
+static void resetComponent() {
+    
+}
 
 void initVariant() {
     
@@ -43,5 +45,6 @@ void initVariant() {
     pinMode(PIN_REG_ON, OUTPUT);
     setStepUp(LOW);
 
-
+    // initialize the IO_Extender
+    resetComponent();
 }
