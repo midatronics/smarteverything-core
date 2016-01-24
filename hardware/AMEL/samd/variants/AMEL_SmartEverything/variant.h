@@ -172,10 +172,10 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PIN_USB_DP           (30ul)
 
 // External Battery
-#define PIN_EXT_PWR      (47u)
-#define PIN_LIPO_MON     (48u)
-#define PIN_BATT_MON     (49u)
-#define PIN_ENA_MON      (50u)
+#define PIN_EXT_PWR      (46u)
+#define PIN_LIPO_MON     (47u)
+#define PIN_BATT_MON     (48u)
+#define PIN_ENA_MON      (49u)
 
 /*
     Yellow Led wrapper function
