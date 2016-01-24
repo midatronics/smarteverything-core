@@ -86,15 +86,6 @@ extern "C"
 #define PIN_LED3             PIN_LED_TXL
 #define LED_BUILTIN          PIN_LED_13
 
-// I/O Extender
-#define PIN_IO_EXT_RST      (48u)
-#define PIN_IO_EXT_INT      (49u)
-
-//TODO Mick shall this remain ????
-// Step-Up Power
-#define PIN_EXT_PWR         (50u)
-#define PIN_REG_ON          (51u)
-
 /*
  * Analog pins
  */
@@ -180,6 +171,12 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PIN_USB_DM           (29ul)
 #define PIN_USB_DP           (30ul)
 
+// External Battery
+#define PIN_EXT_PWR      (47u)
+#define PIN_LIPO_MON     (48u)
+#define PIN_BATT_MON     (49u)
+#define PIN_ENA_MON      (50u)
+
 /*
     Yellow Led wrapper function
     These functions has been created for a more comfortable use 
@@ -193,17 +190,6 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 void ledYellowOneLight(uint32_t value);
 void ledYellowTwoLight(uint32_t value);
 
-
-
-
-/*
-    Enable/Disable the StepUp
-    
-    param:
-    true = Step-up the Battery Power
-    false= Do not Step-up the Battery Power
-*/
-void setStepUp(uint32_t on);
 
 /*
     Return the information if the StepUp is enabled
