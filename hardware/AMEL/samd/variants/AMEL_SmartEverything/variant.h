@@ -171,6 +171,9 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PIN_USB_DM           (29ul)
 #define PIN_USB_DP           (30ul)
 
+// reset Pin
+#define PIN_RESET_COMPONENT (30u)
+
 // External Battery
 #define PIN_EXT_PWR      (46u)
 #define PIN_LIPO_MON     (47u)
@@ -212,6 +215,15 @@ No pull-up circuits are allowed on the FORCE_ON pin, since the signal is already
 */
 void gpsForceOn(void);
 
+/*
+ * The function resets all the component mounted on the base 
+ *      GPS
+ *      SigFox
+ *      BLE
+ * The reset is executed by a LOW signal.
+ * The function move LOW the signal for a while and than move up again.
+ */
+void resetBaseComponent(void);
 
 void sfxSleep(void);
 void sfxWakeup(void);

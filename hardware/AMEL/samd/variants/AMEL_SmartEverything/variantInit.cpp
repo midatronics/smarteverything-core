@@ -22,8 +22,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 
-static void resetComponent() {
-    
+
+void resetBaseComponent() {
+    digitalWrite(PIN_RESET_COMPONENT, LOW);
+    delay(10); // wait 10 mSec.
+    digitalWrite(PIN_RESET_COMPONENT, HIGH);
 }
 
 void initVariant() {
@@ -36,9 +39,18 @@ void initVariant() {
     
     // initialize The EXT_PWR Pin as input
     // it will be HIGH when the battery is not connected
-    pinMode(PIN_EXT_PWR, INPUT_PULLDOWN);
+    pinMode(PIN_EXT_PWR, INPUT_PULLDOWN); 
     
-
-    // initialize the IO_Extender
-    resetComponent();
+    // initialize the battery monitor
+    pinMode(PIN_BATT_MON, INPUT);
+    pinMode(PIN_LIPO_MON, INPUT);
+    pinMode(PIN_ENA_MON, OUTPUT);
+    digitalWrite(PIN_ENA_MON, LOW);  // disable the battery monitor
+    
+    //initialize the reset pin   
+    pinMode(PIN_RESET_COMPONENT, OUTPUT);
+    digitalWrite(PIN_RESET_COMPONENT, HIGH);
+    
+    // reset the base component
+    resetBaseComponent();
 }
