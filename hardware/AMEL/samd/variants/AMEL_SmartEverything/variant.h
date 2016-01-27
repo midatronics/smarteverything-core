@@ -110,8 +110,20 @@ static const uint8_t A5  = PIN_A5 ;
 // GPS
 #define PIN_GPS_TX           (31ul)
 #define PIN_GPS_RX           (32ul)
+#define PIN_GPS_FORCE_ON     (33ul)
 #define PAD_GPS_TX           (UART_TX_PAD_0)
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
+
+// SigFox
+#define PIN_SIGFOX_RX        (34ul)
+#define PIN_SIGFOX_TX        (35ul)
+#define PIN_SIGFOX_RTS       (36ul)
+#define PIN_SIGFOX_CTS       (37ul)
+#define PIN_SIGFOX_RADIO_STS (38ul)
+#define PIN_SIGFOX_STDBY_STS (39ul)
+#define PIN_SIGFOX_WAKEUP    (40ul)
+#define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
+#define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
 
 // BLE
 #define PIN_BLE_TX           (41ul)
@@ -120,14 +132,6 @@ static const uint8_t A5  = PIN_A5 ;
 #define PIN_BLE_CTS          (44ul)
 #define PAD_BLE_TX           (UART_TX_RTS_CTS_PAD_0_2_3)
 #define PAD_BLE_RX           (SERCOM_RX_PAD_1)
-
-// SigFox
-#define PIN_SIGFOX_RX        (34ul)
-#define PIN_SIGFOX_TX        (35ul)
-#define PIN_SIGFOX_RTS       (36ul)
-#define PIN_SIGFOX_CTS       (37ul)
-#define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
 
 // Serial1
 #define PIN_SERIAL1_RX       (0ul)

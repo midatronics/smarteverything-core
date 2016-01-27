@@ -18,7 +18,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 #include <Arduino.h>
-#include "internalI2C.h"
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 
@@ -35,6 +34,17 @@ static void setInitGPS(void)
     // set GPS in standby
     GPS.print(SL868A_SET_STDBY_CMD);
 }
+
+static void configureSFXPin(void) {
+    pinMode(PIN_SIGFOX_WAKEUP, OUTPUT);
+    pinMode(PIN_SIGFOX_STDBY_STS, OUTPUT);
+    pinMode(PIN_SIGFOX_RADIO_STS, OUTPUT);
+}
+
+static void configureGPSPin(void) {
+    pinMode(PIN_GPS_FORCE_ON, OUTPUT);    
+}
+
 
 void resetBaseComponent() {
     digitalWrite(PIN_RESET_COMPONENT, LOW);
@@ -63,6 +73,9 @@ void initVariant() {
     //initialize the reset pin   
     pinMode(PIN_RESET_COMPONENT, OUTPUT);
     digitalWrite(PIN_RESET_COMPONENT, HIGH);
+    
+    configureSFXPin();
+    configureGPSPin();
     
     // reset the base component
     resetBaseComponent();

@@ -297,41 +297,19 @@ bool isOnBattery(void) {
 }
 
 
-void gpsForceOn(void){
-    bool ret = false;
-    uint8_t delay=0;
-    uint8_t data = 0;
-    
+void gpsForceOn(void){   
 	// Activate force on moving low
-    data = readRegister(TCA6416A_ADDRESS, OUTPUT_PORT_1);
-    data &= ~GPS_FORCE_ON_PIN;
-    
-	writeRegister(TCA6416A_ADDRESS, OUTPUT_PORT_1, data);
-
+    digitalWrite(PIN_GPS_FORCE_ON, LOW);
 }
-void sfxSleep(void){
-    bool ret = false;
-    uint8_t delay=0;
-    uint8_t data = 0;
-    
-	// read the IoExtender data actual situation
-    data = readRegister(TCA6416A_ADDRESS, OUTPUT_PORT_1);
-    data |= SFX_WAKEUP_PIN; // Put SFX in Sleep
-    
-	// send to IoExtender the new data
-	writeRegister(TCA6416A_ADDRESS, OUTPUT_PORT_1, data);
 
+void sfxSleep(void){
+
+    digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
+    
 }
 
 void sfxWakeup(void){
-     bool ret = false;
-     uint8_t delay=0;
-     uint8_t data = 0;
-	 
-     // read the IoExtender data actual situation
-     data = readRegister(TCA6416A_ADDRESS, OUTPUT_PORT_1);
-     data &= ~SFX_WAKEUP_PIN;   // Wakeup SFX
-         
-     // send to IoExtender the new data
-     writeRegister(TCA6416A_ADDRESS, OUTPUT_PORT_1, data);
+
+     digitalWrite(PIN_SIGFOX_WAKEUP, LOW);   // Wakeup SFX
+     
 }
