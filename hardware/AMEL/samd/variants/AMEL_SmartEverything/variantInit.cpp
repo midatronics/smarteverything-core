@@ -23,6 +23,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 static const uint32_t TWI_CLOCK_SME = 100000;
 
 
+#define  SL868A_SET_STDBY_CMD    "$PMTK161,0*28\r\n"    // Set standby
+
+static void setInitGPS(void)
+{
+    // Initialize the Serial of the GPS.
+    // This is hide to the user that could run again the begin.
+    // But it is required to send the message for the STDBY.
+    GPS.begin(9600);
+    
+    // set GPS in standby
+    GPS.print(SL868A_SET_STDBY_CMD);
+}
+
 void resetBaseComponent() {
     digitalWrite(PIN_RESET_COMPONENT, LOW);
     delay(10); // wait 10 mSec.
@@ -53,4 +66,7 @@ void initVariant() {
     
     // reset the base component
     resetBaseComponent();
+    
+    // put GPS in stdby to save power
+    setInitGPS();
 }
