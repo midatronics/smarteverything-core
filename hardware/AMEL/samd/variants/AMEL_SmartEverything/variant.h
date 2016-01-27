@@ -114,18 +114,18 @@ static const uint8_t A5  = PIN_A5 ;
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
 // BLE
-#define PIN_BLE_TX           (37ul)
-#define PIN_BLE_RX           (38ul)
-#define PIN_BLE_RTS          (39ul)
-#define PIN_BLE_CTS          (40ul)
+#define PIN_BLE_TX           (41ul)
+#define PIN_BLE_RX           (42ul)
+#define PIN_BLE_RTS          (43ul)
+#define PIN_BLE_CTS          (44ul)
 #define PAD_BLE_TX           (UART_TX_RTS_CTS_PAD_0_2_3)
 #define PAD_BLE_RX           (SERCOM_RX_PAD_1)
 
 // SigFox
-#define PIN_SIGFOX_RX        (33ul)
-#define PIN_SIGFOX_TX        (34ul)
-#define PIN_SIGFOX_RTS       (35ul)
-#define PIN_SIGFOX_CTS       (36ul)
+#define PIN_SIGFOX_RX        (34ul)
+#define PIN_SIGFOX_TX        (35ul)
+#define PIN_SIGFOX_RTS       (36ul)
+#define PIN_SIGFOX_CTS       (37ul)
 #define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
 #define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
 
