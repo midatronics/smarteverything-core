@@ -19,7 +19,6 @@
 
 #include <Arduino.h>
 #include "WireIoExt.h"
-#include "internalI2C.h"
 
 /*
  * Pins descriptions
