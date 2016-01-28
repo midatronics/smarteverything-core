@@ -302,6 +302,15 @@ void gpsForceOn(void){
     digitalWrite(PIN_GPS_FORCE_ON, LOW);
 }
 
+/*
+Output signal which indicates the status of the radio. 
+Set to VCC during radio transmission or as soon as a radio frame is detected with correct synchronization word. 
+The signals returns to GND at the end of transmission or as soon as the frame reception is finished.
+*/
+bool isSFXMsgOnAir(void) {
+    return digitalRead(PIN_SIGFOX_RADIO_STS);
+}
+
 void sfxSleep(void){
 
     digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
