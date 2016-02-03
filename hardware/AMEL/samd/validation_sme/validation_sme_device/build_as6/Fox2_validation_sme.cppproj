@@ -420,17 +420,13 @@
       <SubType>compile</SubType>
       <Link>core\USB\CDC.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\HID.cpp">
+    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\PluggableUSB.cpp">
       <SubType>compile</SubType>
-      <Link>core\USB\HID.cpp</Link>
+      <Link>core\USB\PluggableUSB.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\samd21_device.c">
+    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\PluggableUSB.h">
       <SubType>compile</SubType>
-      <Link>core\USB\samd21_device.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\samd21_device.h">
-      <SubType>compile</SubType>
-      <Link>core\USB\samd21_device.h</Link>
+      <Link>core\USB\PluggableUSB.h</Link>
     </Compile>
     <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\samd21_host.c">
       <SubType>compile</SubType>
@@ -439,6 +435,10 @@
     <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\samd21_host.h">
       <SubType>compile</SubType>
       <Link>core\USB\samd21_host.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\SAMD21_USBDevice.h">
+      <SubType>compile</SubType>
+      <Link>core\USB\SAMD21_USBDevice.h</Link>
     </Compile>
     <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\USBAPI.h">
       <SubType>compile</SubType>
@@ -456,17 +456,9 @@
       <SubType>compile</SubType>
       <Link>core\USB\USBDesc.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\USB_device.h">
-      <SubType>compile</SubType>
-      <Link>core\USB\USB_device.h</Link>
-    </Compile>
     <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\USB_host.h">
       <SubType>compile</SubType>
       <Link>core\USB\USB_host.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\USB\USB_interrupt.c">
-      <SubType>compile</SubType>
-      <Link>core\USB\USB_interrupt.c</Link>
     </Compile>
     <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\cores\arduino\WCharacter.h">
       <SubType>compile</SubType>
@@ -559,6 +551,10 @@
     <Compile Include="..\..\..\..\..\..\..\ArduinoZero\hardware\arduino\samd\libraries\Wire\Wire.h">
       <SubType>compile</SubType>
       <Link>Wire\Wire.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\variants\AMEL_SmartEverything\internalI2C.cpp">
+      <SubType>compile</SubType>
+      <Link>variant\internalI2C.cpp</Link>
     </Compile>
     <Compile Include="..\..\..\variants\AMEL_SmartEverything\internalI2C.h">
       <SubType>compile</SubType>

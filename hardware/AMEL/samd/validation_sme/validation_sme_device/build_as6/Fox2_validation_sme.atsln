@@ -1,7 +1,9 @@
-
-Microsoft Visual Studio Solution File, Format Version 11.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
-Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "validation_sme", "validation_sme_6_2.cppproj", "{B3F859AD-E162-4C2F-9684-EAC6932FEC80}"
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "Fox2_validation_sme", "Fox2_validation_sme.cppproj", "{B3F859AD-E162-4C2F-9684-EAC6932FEC80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
