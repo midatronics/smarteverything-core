@@ -211,13 +211,15 @@ bool isOnBattery(void);
 /*
  * FORCE-ON (only SE868-A)
 Force-ON is an input signal that can be used to wake up the SE868-A from the sleep mode. 
-It is internally pulled-up. It has active-low logic, i.e. the module wakes up when FORCE_ON is tied to ground. When inactive, it should be left open drain or open collector.
+It is internally pulled-up. It has active-low logic, i.e. the module wakes up when FORCE_ON is tied to ground. 
+When inactive, it should be left open drain or open collector.
 
 Note:
 keeping FORCE_ON tied to ground won’t prevent the SE868-A from going into sleep mode, since this signal is sensitive only to the high-low transition.
 No pull-up circuits are allowed on the FORCE_ON pin, since the signal is already internally pulled up.
 */
-void gpsForceOn(void);
+void gpsWakeup(void);
+void gpsSleep(void);
 
 /*
  * The function resets all the component mounted on the base 

@@ -21,9 +21,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 
-
-#define  SL868A_SET_STDBY_CMD    "$PMTK161,0*28\r\n"    // Set standby
-
 static void setInitGPS(void)
 {
     // Initialize the Serial of the GPS.
@@ -32,7 +29,7 @@ static void setInitGPS(void)
     GPS.begin(9600);
     
     // set GPS in standby
-    GPS.print(SL868A_SET_STDBY_CMD);
+    gpsSleep();
 }
 
 static void configureSFXPin(void) {

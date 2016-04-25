@@ -297,10 +297,18 @@ bool isOnBattery(void) {
 }
 
 
-void gpsForceOn(void){   
+void gpsWakeup(void){   
 	// Activate force on moving low
+    digitalWrite(PIN_GPS_FORCE_ON, HIGH);
+    delay(2);
     digitalWrite(PIN_GPS_FORCE_ON, LOW);
 }
+
+#define  SL868A_SET_STDBY_CMD    "$PMTK161,0*28\r\n"    // Set standby
+void gpsSleep(void) {
+    GPS.print(SL868A_SET_STDBY_CMD);
+}
+
 
 /*
 Output signal which indicates the status of the radio. 
