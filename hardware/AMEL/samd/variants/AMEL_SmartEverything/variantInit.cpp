@@ -35,9 +35,7 @@ uint8_t smeInitError=0xFF;
 static void ioExtenderInit(void) {
     
 	internalI2CInit();
-    // first test the I2C bus
-    uint8_t data = readRegister(HTS221_ADDRESS, WHO_AM_I);
-    if (data == WHO_AM_I_RETURN){
+
         smeInitError = 0;
 
         if (writeRegister( TCA6416A_ADDRESS, CONFIG_PORT_0, CONF_PORT_0)!=false) {
@@ -73,11 +71,6 @@ static void ioExtenderInit(void) {
             writeRegister( TCA6416A_ADDRESS, OUTPUT_PORT_1, actual[1]);
             resetsDbg[1] = readRegister( TCA6416A_ADDRESS, OUTPUT_PORT_1);
 			
-    } else {
-
-        smeInitError = 1;
-    }
-
 }
 
 
