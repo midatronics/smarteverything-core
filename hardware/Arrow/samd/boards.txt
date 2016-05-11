@@ -1,0 +1,159 @@
+# Copyright (c) 2015 Amel-Tech (a division of Amel Srl). All right reserved.
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+SmartEverything_Fox_atmel_ice.name=SmartEverything Fox (via Atmel-ICE)
+SmartEverything_Fox_atmel_ice.upload.tool=arduino:openocd
+SmartEverything_Fox_atmel_ice.upload.protocol=swd
+SmartEverything_Fox_atmel_ice.upload.maximum_size=262144
+SmartEverything_Fox_atmel_ice.upload.use_1200bps_touch=false
+SmartEverything_Fox_atmel_ice.upload.wait_for_upload_port=false
+SmartEverything_Fox_atmel_ice.upload.native_usb=false
+SmartEverything_Fox_atmel_ice.build.mcu=cortex-m0plus
+SmartEverything_Fox_atmel_ice.build.f_cpu=48000000L
+SmartEverything_Fox_atmel_ice.build.usb_product="SmartEverything Fox"
+SmartEverything_Fox_atmel_ice.build.usb_manufacturer="Axelelettronica"
+SmartEverything_Fox_atmel_ice.build.board=SAMD_SMARTEVERYTHING_FOX
+SmartEverything_Fox_atmel_ice.build.core=arduino:arduino
+SmartEverything_Fox_atmel_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags}
+SmartEverything_Fox_atmel_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+SmartEverything_Fox_atmel_ice.build.openocdscript=openocd_scripts/variant_atmel_ice.cfg
+SmartEverything_Fox_atmel_ice.build.variant=Fox
+SmartEverything_Fox_atmel_ice.build.variant_system_lib=
+SmartEverything_Fox_atmel_ice.build.vid=0x2341
+SmartEverything_Fox_atmel_ice.build.pid=0xe002
+SmartEverything_Fox_atmel_ice.bootloader.tool=arduino:openocd
+SmartEverything_Fox_atmel_ice.bootloader.file=Fox/samd21_sam_ba.bin
+
+SmartEverything_Fox_sam_ice.name=SmartEverything Fox (via SAM-ICE)
+SmartEverything_Fox_sam_ice.upload.tool=arduino:openocd
+SmartEverything_Fox_sam_ice.upload.protocol=swd
+SmartEverything_Fox_sam_ice.upload.maximum_size=262144
+SmartEverything_Fox_sam_ice.upload.use_1200bps_touch=false
+SmartEverything_Fox_sam_ice.upload.wait_for_upload_port=false
+SmartEverything_Fox_sam_ice.upload.native_usb=false
+SmartEverything_Fox_sam_ice.build.mcu=cortex-m0plus
+SmartEverything_Fox_sam_ice.build.f_cpu=48000000L
+SmartEverything_Fox_sam_ice.build.usb_product="SmartEverything Fox"
+SmartEverything_Fox_sam_ice.build.usb_manufacturer="Axelelettronica"
+SmartEverything_Fox_sam_ice.build.board=SAMD_SMARTEVERYTHING_FOX
+SmartEverything_Fox_sam_ice.build.core=arduino:arduino
+SmartEverything_Fox_sam_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags}
+SmartEverything_Fox_sam_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+SmartEverything_Fox_sam_ice.build.openocdscript=openocd_scripts/variant_sam_ice.cfg
+SmartEverything_Fox_sam_ice.build.variant=Fox
+SmartEverything_Fox_sam_ice.build.variant_system_lib=
+SmartEverything_Fox_sam_ice.build.vid=0x2341
+SmartEverything_Fox_sam_ice.build.pid=0xe002
+SmartEverything_Fox_sam_ice.bootloader.tool=arduino:openocd
+SmartEverything_Fox_sam_ice.bootloader.file=Fox/samd21_sam_ba.bin
+
+SmartEverything_Fox_native.name=SmartEverything Fox (Native USB Port)
+SmartEverything_Fox_native.vid.0=0x2341
+SmartEverything_Fox_native.pid.0=0xe001
+SmartEverything_Fox_native.vid.1=0x2341
+SmartEverything_Fox_native.pid.1=0xe002
+SmartEverything_Fox_native.upload.tool=arduino:bossac
+SmartEverything_Fox_native.upload.protocol=sam-ba
+SmartEverything_Fox_native.upload.maximum_size=262144
+SmartEverything_Fox_native.upload.use_1200bps_touch=true
+SmartEverything_Fox_native.upload.wait_for_upload_port=true
+SmartEverything_Fox_native.upload.native_usb=true
+SmartEverything_Fox_native.build.mcu=cortex-m0plus
+SmartEverything_Fox_native.build.f_cpu=48000000L
+SmartEverything_Fox_native.build.usb_product="SmartEverything Fox"
+SmartEverything_Fox_native.build.usb_manufacturer="Axelelettronica"
+SmartEverything_Fox_native.build.board=SAMD_SMARTEVERYTHING_FOX
+SmartEverything_Fox_native.build.core=arduino:arduino
+SmartEverything_Fox_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags}
+SmartEverything_Fox_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+SmartEverything_Fox_native.build.openocdscript=
+SmartEverything_Fox_native.build.variant=Fox
+SmartEverything_Fox_native.build.variant_system_lib=
+SmartEverything_Fox_native.build.vid=0x2341
+SmartEverything_Fox_native.build.pid=0xe002
+
+
+#NetTrotter Unit
+NetTrotter_atmel_ice.name=SmartTutto (via Atmel-ICE)
+NetTrotter_atmel_ice.upload.tool=arduino:openocd
+NetTrotter_atmel_ice.upload.protocol=swd
+NetTrotter_atmel_ice.upload.maximum_size=262144
+NetTrotter_atmel_ice.upload.use_1200bps_touch=false
+NetTrotter_atmel_ice.upload.wait_for_upload_port=false
+NetTrotter_atmel_ice.upload.native_usb=false
+NetTrotter_atmel_ice.build.mcu=cortex-m0plus
+NetTrotter_atmel_ice.build.f_cpu=48000000L
+NetTrotter_atmel_ice.build.usb_product="SmartTutto"
+NetTrotter_atmel_ice.build.usb_manufacturer="Axelelettronica"
+NetTrotter_atmel_ice.build.board=SAMD_SMARTEVERYTHING_FOX
+NetTrotter_atmel_ice.build.core=arduino:arduino
+NetTrotter_atmel_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags}
+NetTrotter_atmel_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+NetTrotter_atmel_ice.build.openocdscript=openocd_scripts/variant_atmel_ice.cfg
+NetTrotter_atmel_ice.build.variant=Fox
+NetTrotter_atmel_ice.build.variant_system_lib=
+NetTrotter_atmel_ice.build.vid=0x2341
+NetTrotter_atmel_ice.build.pid=0xe002
+NetTrotter_atmel_ice.bootloader.tool=arduino:openocd
+NetTrotter_atmel_ice.bootloader.file=Fox/samd21_sam_ba.bin
+
+NetTrotter_sam_ice.name=SmartTutto (via SAM-ICE)
+NetTrotter_sam_ice.upload.tool=arduino:openocd
+NetTrotter_sam_ice.upload.protocol=swd
+NetTrotter_sam_ice.upload.maximum_size=262144
+NetTrotter_sam_ice.upload.use_1200bps_touch=false
+NetTrotter_sam_ice.upload.wait_for_upload_port=false
+NetTrotter_sam_ice.upload.native_usb=false
+NetTrotter_sam_ice.build.mcu=cortex-m0plus
+NetTrotter_sam_ice.build.f_cpu=48000000L
+NetTrotter_sam_ice.build.usb_product="SmartTutto"
+NetTrotter_sam_ice.build.usb_manufacturer="Axelelettronica"
+NetTrotter_sam_ice.build.board=SAMD_SMARTEVERYTHING_FOX
+NetTrotter_sam_ice.build.core=arduino:arduino
+NetTrotter_sam_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags}
+NetTrotter_sam_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+NetTrotter_sam_ice.build.openocdscript=openocd_scripts/variant_sam_ice.cfg
+NetTrotter_sam_ice.build.variant=Fox
+NetTrotter_sam_ice.build.variant_system_lib=
+NetTrotter_sam_ice.build.vid=0x2341
+NetTrotter_sam_ice.build.pid=0xe002
+NetTrotter_sam_ice.bootloader.tool=arduino:openocd
+NetTrotter_sam_ice.bootloader.file=Fox/samd21_sam_ba.bin
+
+NetTrotter_native.name=SmartTutto (Native USB Port)
+NetTrotter_native.vid.0=0x2341
+NetTrotter_native.pid.0=0xe001
+NetTrotter_native.vid.1=0x2341
+NetTrotter_native.pid.1=0xe002
+NetTrotter_native.upload.tool=arduino:bossac
+NetTrotter_native.upload.protocol=sam-ba
+NetTrotter_native.upload.maximum_size=262144
+NetTrotter_native.upload.use_1200bps_touch=true
+NetTrotter_native.upload.wait_for_upload_port=true
+NetTrotter_native.upload.native_usb=true
+NetTrotter_native.build.mcu=cortex-m0plus
+NetTrotter_native.build.f_cpu=48000000L
+NetTrotter_native.build.usb_product="SmartTutto"
+NetTrotter_native.build.usb_manufacturer="Axelelettronica"
+NetTrotter_native.build.board=SAMD_SMARTEVERYTHING_FOX
+NetTrotter_native.build.core=arduino:arduino
+NetTrotter_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags}
+NetTrotter_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+NetTrotter_native.build.openocdscript=
+NetTrotter_native.build.variant=Fox
+NetTrotter_native.build.variant_system_lib=
+NetTrotter_native.build.vid=0x2341
+NetTrotter_native.build.pid=0xe00
