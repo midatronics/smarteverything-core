@@ -20,6 +20,8 @@
 #include <Arduino.h>
 #include "WireIoExt.h"
 
+uint8_t smeInitError;
+
 /*
  * Pins descriptions
  */
@@ -149,25 +151,25 @@ const PinDescription g_APinDescription[]=
 /* START FOX2 SPECIFIC  */  
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | COMPONENT RESET  |        |                 |
+ * |            | COMP IOEXTENDER  |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 30         |                  |  PB31  | FORCE_ON        | 
+ * | 30         |                  |  PB30  | IO_RESET        | 
+ * | 31         |                  |  PB31  | IOE_INT         | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
+  { PORTB,  30, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // HRST_B
   { PORTB,  31, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // FORCE_ON
      
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * |            | GPS              |        |                 |
+ * |            |       GPS        |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 31         |                  |  PA12  | GPS_UART TX     | *SERCOM2/PAD[0]
- * | 32         |                  |  PA03  | GPS_UART RX     | *SERCOM2/PAD[1]
- * | 33         |                  |  PB30  | FORCE_ON        | 
+ * | 32         |                  |  PA12  | GPS_UART TX     | *SERCOM2/PAD[0]
+ * | 33         |                  |  PA03  | GPS_UART RX     | *SERCOM2/PAD[1]
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTA,  12, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // TX: SERCOM2/PAD[0]
   { PORTA,  13, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RX: SERCOM2/PAD[1]
-  { PORTB,  30, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // HRST_B
   
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
@@ -298,10 +300,7 @@ bool isOnBattery(void) {
 
 
 void gpsWakeup(void){   
-	// Activate force on moving low
-    digitalWrite(PIN_GPS_FORCE_ON, HIGH);
-    delay(2);
-    digitalWrite(PIN_GPS_FORCE_ON, LOW);
+    // Activate force on moving low
 }
 
 #define  SL868A_SET_STDBY_CMD    "$PMTK161,0*28\r\n"    // Set standby

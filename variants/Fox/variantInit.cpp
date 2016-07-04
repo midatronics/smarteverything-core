@@ -18,6 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 #include <Arduino.h>
+#include "internalI2C.h"
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 
@@ -38,16 +39,53 @@ static void configureSFXPin(void) {
     pinMode(PIN_SIGFOX_RADIO_STS, OUTPUT);
 }
 
-static void configureGPSPin(void) {
-    pinMode(PIN_GPS_FORCE_ON, OUTPUT);    
-}
-
 
 void resetBaseComponent() {
     digitalWrite(PIN_RESET_COMPONENT, LOW);
     delay(10); // wait 10 mSec.
     digitalWrite(PIN_RESET_COMPONENT, HIGH);
 }
+
+
+volatile     uint8_t actual;
+
+static void ioExtenderInit(void) {
+    internalI2CInit();
+
+    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_ID_REG);
+    if ((actual & FXL6408_ID_VALUE) != FXL6408_ID_VALUE) {
+        smeInitError |= IOEXT_ERR;
+    }
+    
+    writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_CONF_PORT_REG, CONF_PORT);
+    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_CONF_PORT_REG);
+    if ((actual & CONF_PORT) != CONF_PORT) {
+        smeInitError |= IOEXT_CONF_ERR;
+    }
+    
+    writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG, FXL6408_NORMAL_RUN_VALUE);
+    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG);
+    if ((actual & FXL6408_NORMAL_RUN_VALUE) != FXL6408_NORMAL_RUN_VALUE) {
+        smeInitError |= IOEXT_CONF_ERR;
+    }
+    
+    // wait a while and reset the chip
+    delay(10);
+    writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG, FXL6408_INITIAL_RESET_VALUE);
+    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG);
+    if ((actual & FXL6408_INITIAL_RESET_VALUE) != FXL6408_INITIAL_RESET_VALUE) {
+        smeInitError |= IOEXT_CONF_ERR;
+    }
+    
+    // wait a while and exit from Reset
+    delay(20);
+        writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG, FXL6408_NORMAL_RUN_VALUE);
+        actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG);
+        if ((actual & FXL6408_NORMAL_RUN_VALUE) != FXL6408_NORMAL_RUN_VALUE) {
+            smeInitError |= IOEXT_CONF_ERR;
+        }
+}
+
 
 void initVariant() {
     
@@ -72,11 +110,12 @@ void initVariant() {
     digitalWrite(PIN_RESET_COMPONENT, HIGH);
     
     configureSFXPin();
-    configureGPSPin();
     
     // reset the base component
     resetBaseComponent();
     
     // put GPS in stdby to save power
     setInitGPS();
+
+    ioExtenderInit();
 }

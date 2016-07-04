@@ -108,9 +108,8 @@ static const uint8_t A5  = PIN_A5 ;
  * Serial interfaces
  */
 // GPS
-#define PIN_GPS_TX           (31ul)
-#define PIN_GPS_RX           (32ul)
-#define PIN_GPS_FORCE_ON     (33ul)
+#define PIN_GPS_TX           (32ul)
+#define PIN_GPS_RX           (33ul)
 #define PAD_GPS_TX           (UART_TX_PAD_0)
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
@@ -171,12 +170,14 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE  (28ul)
-#define PIN_USB_DM           (29ul)
-#define PIN_USB_DP           (30ul)
+#define PIN_USB_HOST_ENABLE  (27ul)
+#define PIN_USB_DM           (28ul)
+#define PIN_USB_DP           (29ul)
 
-// reset Pin
+
+// IoExtender
 #define PIN_RESET_COMPONENT (30u)
+#define PIN_IOE_INT         (31u)
 
 // External Battery
 #define PIN_EXT_PWR      (46u)
@@ -291,5 +292,11 @@ extern Uart SigFox;
 
 
 extern uint8_t smeInitError;
+
+#define IOEXT_ERR       0b10000000
+#define IOEXT_CONF_ERR  0b01000000
+#define IOEXT_INIT_ERR  0b00100000
+
+
 #endif /* _VARIANT_AMEL_SMARTEVERYTHING_ */
 
