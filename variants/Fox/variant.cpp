@@ -252,7 +252,7 @@ Uart Serial1( &sercom0, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERI
 
 Uart GPS( &sercom2, PIN_GPS_RX, PIN_GPS_TX, PAD_GPS_RX, PAD_GPS_TX ) ;
 Uart BLE( &sercom5, PIN_BLE_RX, PIN_BLE_TX, PAD_BLE_RX, PAD_BLE_TX ) ;
-Uart SigFox( &sercom4, PIN_SIGFOX_RX, PIN_SIGFOX_TX, PAD_SIGFOX_RX, PAD_SIGFOX_TX ) ;
+Uart iotAntenna( &sercom4, PIN_SIGFOX_RX, PIN_SIGFOX_TX, PAD_SIGFOX_RX, PAD_SIGFOX_TX ) ;
 
 void SERCOM0_Handler()
 {
@@ -266,7 +266,7 @@ void SERCOM2_Handler()
 
 void SERCOM4_Handler()
 {
-  SigFox.IrqHandler();
+  iotAntenna.IrqHandler();
 }
 
 void SERCOM5_Handler()

@@ -24,6 +24,9 @@
  *        Definitions
  *----------------------------------------------------------------------------*/
 
+#define ASME3_REVISION
+
+
 /** Frequency of the board main oscillator */
 #define VARIANT_MAINOSC		(32768ul)
 
@@ -78,7 +81,7 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_13           PIN_LED_GREEN
+#define PIN_LED_13           (26u)
 #define PIN_LED_RXL          (26u)
 #define PIN_LED_TXL          (27u)
 #define PIN_LED              PIN_LED_13
@@ -261,7 +264,7 @@ extern Uart Serial1;
 
 extern Uart GPS;
 extern Uart BLE;
-extern Uart SigFox;
+extern Uart iotAntenna;
 
 #endif
 

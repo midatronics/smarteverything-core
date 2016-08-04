@@ -1,4 +1,5 @@
-# Copyright (c) 2015 Thibaut VIARD.  All right reserved.
+# Copyright (c) 2015 Atmel Corporation/Thibaut VIARD.  All right reserved.
+# Copyright (c) 2015 Arduino LLC.  All right reserved.
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -20,15 +21,13 @@ ifeq ($(OS),Windows_NT)
 
   # Are we using mingw/msys/msys2/cygwin?
   ifeq ($(TERM),xterm)
-#		T=$(shell cygpath -u $(LOCALAPPDATA))
-		T=$(shell cygpath -u $(APPDATA))
+		T=$(shell cygpath -u $(LOCALAPPDATA))
     MODULE_PATH?=$(T)/Arduino15/packages/arduino
     ARM_GCC_PATH?=$(MODULE_PATH)/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
     RM=rm
     SEP=/
   else
-#    MODULE_PATH?=$(LOCALAPPDATA)/Arduino15/packages/arduino
-    MODULE_PATH?=$(APPDATA)/Arduino15/packages/arduino
+    MODULE_PATH?=$(LOCALAPPDATA)/Arduino15/packages/arduino
     ARM_GCC_PATH?=$(MODULE_PATH)/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
     RM=rm
     SEP=\\
@@ -37,14 +36,14 @@ else
     UNAME_S := $(shell uname -s)
 
     ifeq ($(UNAME_S),Linux)
-			MODULE_PATH?=$HOME/.arduino15/packages/arduino
+			MODULE_PATH?=$(HOME)/.arduino15/packages/arduino
 			ARM_GCC_PATH?=$(MODULE_PATH)/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
       RM=rm
 	    SEP=/
     endif
 
     ifeq ($(UNAME_S),Darwin)
-			MODULE_PATH?=$HOME/Library/Arduino15/packages/arduino/
+			MODULE_PATH?=$(HOME)/Library/Arduino15/packages/arduino/
 			ARM_GCC_PATH?=$(MODULE_PATH)/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
       RM=rm
 	    SEP=/
@@ -62,14 +61,34 @@ SIZE=$(ARM_GCC_PATH)size
 
 # -----------------------------------------------------------------------------
 # Compiler options
-#-w
 CFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -c -std=gnu99 -ffunction-sections -fdata-sections -nostdlib -nostartfiles --param max-inline-insns-single=500
 ifdef DEBUG
 CFLAGS+=-g3 -O1 -DDEBUG=1
 else
 CFLAGS+=-Os -DDEBUG=0
 endif
-CFLAGS_EXTRA?=-D__SAMD21J18A__ -DUSB_PID_LOW=0x01 -DUSB_PID_HIGH=0xE0
+
+# Arduino Zero (PID == 0x004D)
+# CFLAGS_EXTRA?=-D__SAMD21G18A__ -DUSB_PID_HIGH=0x00 -DUSB_PID_LOW=0x4D -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# Genuino Zero (PID == 0x024D)
+# CFLAGS_EXTRA?=-D__SAMD21G18A__ -DUSB_PID_HIGH=0x02 -DUSB_PID_LOW=0x4D -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# Arduino MKR1000 (PID == 0x004E)
+# CFLAGS_EXTRA?=-D__SAMD21G18A__ -DUSB_PID_HIGH=0x00 -DUSB_PID_LOW=0x4E -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# Genuino MKR1000 (PID == 0x024E)
+# CFLAGS_EXTRA?=-D__SAMD21G18A__ -DUSB_PID_HIGH=0x02 -DUSB_PID_LOW=0x4E -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+
+# ASME MKRDUST (PID == 0xE003)
+# CFLAGS_EXTRA?=-D__SAMD21G18A__ -DUSB_PID_HIGH=0xE0 -DUSB_PID_LOW=0x03 -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# ASME DRAGONFLY (PID == 0xE005)
+# CFLAGS_EXTRA?=-D__SAMD21J18A__ -DUSB_PID_HIGH=0xE0 -DUSB_PID_LOW=0x05 -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# ASME FOX3 (PID == 0xE007)
+CFLAGS_EXTRA?=-D__SAMD21J18A__ -DUSB_PID_HIGH=0xE0 -DUSB_PID_LOW=0x07 -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# ASME LION (PID == 0xE009)
+# CFLAGS_EXTRA?=-D__SAMD21J18A__ -DUSB_PID_HIGH=0xE0 -DUSB_PID_LOW=0x09 -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+# ASME ADI 5-AXIS (PID == 0xE00B)
+# CFLAGS_EXTRA?=-D__SAMD21G18A__ -DUSB_PID_HIGH=0xE0 -DUSB_PID_LOW=0x0B -DUSB_VID_LOW=0x41 -DUSB_VID_HIGH=0x23
+
+
 INCLUDES=-I"$(MODULE_PATH)/tools/CMSIS/4.0.0-atmel/CMSIS/Include/" -I"$(MODULE_PATH)/tools/CMSIS/4.0.0-atmel/Device/ATMEL/"
 
 # -----------------------------------------------------------------------------
@@ -79,8 +98,6 @@ LDFLAGS+=-Wl,--warn-common -Wl,--warn-section-align -Wl,--warn-unresolved-symbol
 
 # -----------------------------------------------------------------------------
 # Source files and objects
-# this path has to be updated if Arduino delivers any samd-core update!
-PROJECT_PATH=$(MODULE_PATH)/hardware/samd/1.6.1/bootloaders/zero
 SOURCES= \
 board_driver_led.c \
 board_driver_serial.c \
@@ -93,9 +110,8 @@ sam_ba_cdc.c \
 sam_ba_monitor.c \
 sam_ba_serial.c
 
-VPATH=$(PROJECT_PATH)
 OBJECTS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.c=.o))
-#DEPS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.c=.d))
+DEPS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.c=.d))
 
 NAME=samd21_sam_ba
 ELF=$(NAME).elf
@@ -110,12 +126,13 @@ AS_BUILD=
 AS_CLEAN=
 endif
 
+
 all: print_info $(SOURCES) $(BIN) $(HEX) $(AS_BUILD)
 
 $(ELF): Makefile $(BUILD_PATH) $(OBJECTS)
 	@echo ----------------------------------------------------------
 	@echo Creating ELF binary
-	"$(CC)" -L"$(PROJECT_PATH)" $(LDFLAGS) -Os -Wl,--gc-sections -save-temps -Tbootloader_samd21x18.ld -Wl,-Map,"$(BUILD_PATH)/$(NAME).map" -o "$(BUILD_PATH)/$(ELF)" -Wl,--start-group $(OBJECTS) -lm -Wl,--end-group
+	"$(CC)" -L. -L$(BUILD_PATH) $(LDFLAGS) -Os -Wl,--gc-sections -save-temps -Tbootloader_samd21x18.ld -Wl,-Map,"$(BUILD_PATH)/$(NAME).map" -o "$(BUILD_PATH)/$(ELF)" -Wl,--start-group $(OBJECTS) -lm -Wl,--end-group
 	"$(NM)" "$(BUILD_PATH)/$(ELF)" >"$(BUILD_PATH)/$(NAME)_symbols.txt"
 	"$(SIZE)" --format=sysv -t -x $(BUILD_PATH)/$(ELF)
 
@@ -132,7 +149,7 @@ $(HEX): $(ELF)
 $(BUILD_PATH)/%.o: %.c
 	@echo ----------------------------------------------------------
 	@echo Compiling $< to $@
-	"$(CC)" $(CFLAGS) $(CFLAGS_EXTRA) $(INCLUDES) "$<" -o $@
+	"$(CC)" $(CFLAGS) $(CFLAGS_EXTRA) $(INCLUDES) $< -o $@
 	@echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 $(BUILD_PATH):
@@ -145,9 +162,6 @@ print_info:
 	@echo Compiling bootloader using
 	@echo BASE PATH = $(MODULE_PATH)
 	@echo GCC  PATH = $(ARM_GCC_PATH)
-	@echo PROJ PATH = $(PROJECT_PATH)
-#	@echo SRC       = $(SOURCES)
-#	@echo OBJ       = $(OBJECTS)
 #	@echo OS        = $(OS)
 #	@echo SHELL     = $(SHELL)
 #	@echo TERM      = $(TERM)
