@@ -295,7 +295,7 @@ void ledYellowOneLight(uint32_t value)   {
 }
 
 bool isOnBattery(void) {   
-    return !digitalRead(PIN_EXT_PWR);
+    return digitalRead(PIN_EXT_PWR);
 }
 
 
