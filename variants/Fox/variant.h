@@ -23,6 +23,7 @@
 /*----------------------------------------------------------------------------
  *        Definitions
  *----------------------------------------------------------------------------*/
+#define ASME3_REVISION
 
 /** Frequency of the board main oscillator */
 #define VARIANT_MAINOSC		(32768ul)
@@ -78,9 +79,9 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_13           PIN_LED_GREEN
+#define PIN_LED_13           (13u)
 #define PIN_LED_RXL          (26u)
-#define PIN_LED_TXL          (27u)
+#define PIN_LED_TXL          (25u)
 #define PIN_LED              PIN_LED_13
 #define PIN_LED2             PIN_LED_RXL
 #define PIN_LED3             PIN_LED_TXL
@@ -114,8 +115,8 @@ static const uint8_t A5  = PIN_A5 ;
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
 // SigFox
-#define PIN_SIGFOX_RX        (34ul)
-#define PIN_SIGFOX_TX        (35ul)
+#define PIN_SIGFOX_TX        (34ul)
+#define PIN_SIGFOX_RX        (35ul)
 #define PIN_SIGFOX_RTS       (36ul)
 #define PIN_SIGFOX_CTS       (37ul)
 #define PIN_SIGFOX_RADIO_STS (38ul)
@@ -146,9 +147,9 @@ static const uint8_t A5  = PIN_A5 ;
 #define PIN_SPI_MISO         (22u)
 #define PIN_SPI_MOSI         (23u)
 #define PIN_SPI_SCK          (24u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_2_SCK_3
-#define PAD_SPI_RX           SERCOM_RX_PAD_0
+#define PERIPH_SPI           sercom1
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI_RX           SERCOM_RX_PAD_3
 
 #define PIN_SPI_SS           (25u)
 
@@ -297,6 +298,8 @@ extern uint8_t smeInitError;
 #define IOEXT_CONF_ERR  0b01000000
 #define IOEXT_INIT_ERR  0b00100000
 
+// Alias Serial to SerialUSB
+#define Serial                      SerialUSB
 
 #endif /* _VARIANT_AMEL_SMARTEVERYTHING_ */
 
