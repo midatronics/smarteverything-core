@@ -1,0 +1,239 @@
+# Copyright (c) 2015 Amel-Tech (a division of Amel Srl). All right reserved.
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+
+SmartEverything_Fox3_atmel_ice.name=SmartEverything Fox (via Atmel-ICE) 
+SmartEverything_Fox3_atmel_ice.upload.tool=arduino:openocd 
+SmartEverything_Fox3_atmel_ice.upload.protocol=swd 
+SmartEverything_Fox3_atmel_ice.upload.maximum_size=262144 
+SmartEverything_Fox3_atmel_ice.upload.use_1200bps_touch=false 
+SmartEverything_Fox3_atmel_ice.upload.wait_for_upload_port=false 
+SmartEverything_Fox3_atmel_ice.upload.native_usb=false 
+SmartEverything_Fox3_atmel_ice.build.mcu=cortex-m0plus 
+SmartEverything_Fox3_atmel_ice.build.f_cpu=48000000L 
+SmartEverything_Fox3_atmel_ice.build.usb_product="SmartEverything Fox" 
+SmartEverything_Fox3_atmel_ice.build.usb_manufacturer="Arrows" 
+SmartEverything_Fox3_atmel_ice.build.board=SAMD_SMARTEVERYTHING_FOX 
+SmartEverything_Fox3_atmel_ice.build.core=arduino:arduino 
+SmartEverything_Fox3_atmel_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Fox3_atmel_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Fox3_atmel_ice.build.openocdscript=openocd_scripts/variant_atmel_ice.cfg 
+SmartEverything_Fox3_atmel_ice.build.variant=Fox 
+SmartEverything_Fox3_atmel_ice.build.variant_system_lib= 
+SmartEverything_Fox3_atmel_ice.build.vid=0x2341 
+SmartEverything_Fox3_atmel_ice.build.pid=0xe008 
+SmartEverything_Fox3_atmel_ice.bootloader.tool=arduino:openocd 
+SmartEverything_Fox3_atmel_ice.bootloader.file=Fox/samd21_sam_ba_fox.bin 
+
+ 
+SmartEverything_Fox3_sam_ice.name=SmartEverything Fox (via SAM-ICE) 
+SmartEverything_Fox3_sam_ice.upload.tool=arduino:openocd 
+SmartEverything_Fox3_sam_ice.upload.protocol=swd 
+SmartEverything_Fox3_sam_ice.upload.maximum_size=262144 
+SmartEverything_Fox3_sam_ice.upload.use_1200bps_touch=false 
+SmartEverything_Fox3_sam_ice.upload.wait_for_upload_port=false 
+SmartEverything_Fox3_sam_ice.upload.native_usb=false 
+SmartEverything_Fox3_sam_ice.build.mcu=cortex-m0plus 
+SmartEverything_Fox3_sam_ice.build.f_cpu=48000000L 
+SmartEverything_Fox3_sam_ice.build.usb_product="SmartEverything Fox" 
+SmartEverything_Fox3_sam_ice.build.usb_manufacturer="Arrows" 
+SmartEverything_Fox3_sam_ice.build.board=SAMD_SMARTEVERYTHING_FOX 
+SmartEverything_Fox3_sam_ice.build.core=arduino:arduino 
+SmartEverything_Fox3_sam_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Fox3_sam_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Fox3_sam_ice.build.openocdscript=openocd_scripts/variant_sam_ice.cfg 
+SmartEverything_Fox3_sam_ice.build.variant=Fox 
+SmartEverything_Fox3_sam_ice.build.variant_system_lib= 
+SmartEverything_Fox3_sam_ice.build.vid=0x2341 
+SmartEverything_Fox3_sam_ice.build.pid=0xe008
+SmartEverything_Fox3_sam_ice.bootloader.tool=arduino:openocd 
+SmartEverything_Fox3_sam_ice.bootloader.file=Fox/samd21_sam_ba_fox.bin 
+
+  
+SmartEverything_Fox3_native.name=SmartEverything Fox (Native USB Port) 
+SmartEverything_Fox3_native.vid.0=0x2341 
+SmartEverything_Fox3_native.pid.0=0xe008 
+SmartEverything_Fox3_native.vid.1=0x2341 
+SmartEverything_Fox3_native.pid.1=0xe007 
+SmartEverything_Fox3_native.upload.tool=arduino:bossac 
+SmartEverything_Fox3_native.upload.protocol=sam-ba 
+SmartEverything_Fox3_native.upload.maximum_size=262144 
+SmartEverything_Fox3_native.upload.use_1200bps_touch=true 
+SmartEverything_Fox3_native.upload.wait_for_upload_port=true 
+SmartEverything_Fox3_native.upload.native_usb=true 
+SmartEverything_Fox3_native.build.mcu=cortex-m0plus 
+SmartEverything_Fox3_native.build.f_cpu=48000000L 
+SmartEverything_Fox3_native.build.usb_product="SmartEverything Fox" 
+SmartEverything_Fox3_native.build.usb_manufacturer="Arrows" 
+SmartEverything_Fox3_native.build.board=SAMD_SMARTEVERYTHING_FOX 
+SmartEverything_Fox3_native.build.core=arduino:arduino 
+SmartEverything_Fox3_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Fox3_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Fox3_native.build.openocdscript= 
+SmartEverything_Fox3_native.build.variant=Fox 
+SmartEverything_Fox3_native.build.variant_system_lib= 
+SmartEverything_Fox3_native.build.vid=0x2341 
+SmartEverything_Fox3_native.build.pid=0xe008 
+
+
+
+SmartEverything_Lion_atmel_ice.name=SmartEverything Lion (via Atmel-ICE) 
+SmartEverything_Lion_atmel_ice.upload.tool=arduino:openocd 
+SmartEverything_Lion_atmel_ice.upload.protocol=swd 
+SmartEverything_Lion_atmel_ice.upload.maximum_size=262144 
+SmartEverything_Lion_atmel_ice.upload.use_1200bps_touch=false 
+SmartEverything_Lion_atmel_ice.upload.wait_for_upload_port=false 
+SmartEverything_Lion_atmel_ice.upload.native_usb=false 
+SmartEverything_Lion_atmel_ice.build.mcu=cortex-m0plus 
+SmartEverything_Lion_atmel_ice.build.f_cpu=48000000L 
+SmartEverything_Lion_atmel_ice.build.usb_product="SmartEverything Lion" 
+SmartEverything_Lion_atmel_ice.build.usb_manufacturer="Arrows" 
+SmartEverything_Lion_atmel_ice.build.board=SAMD_SMARTEVERYTHING_LION 
+SmartEverything_Lion_atmel_ice.build.core=arduino:arduino 
+SmartEverything_Lion_atmel_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Lion_atmel_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Lion_atmel_ice.build.openocdscript=openocd_scripts/variant_atmel_ice.cfg 
+SmartEverything_Lion_atmel_ice.build.variant=Lion 
+SmartEverything_Lion_atmel_ice.build.variant_system_lib= 
+SmartEverything_Lion_atmel_ice.build.vid=0x2341 
+SmartEverything_Lion_atmel_ice.build.pid=0xe00a 
+SmartEverything_Lion_atmel_ice.bootloader.tool=arduino:openocd 
+SmartEverything_Lion_atmel_ice.bootloader.file=Lion/samd21_sam_ba_lion.bin 
+
+ 
+SmartEverything_Lion_sam_ice.name=SmartEverything Lion (via SAM-ICE) 
+SmartEverything_Lion_sam_ice.upload.tool=arduino:openocd 
+SmartEverything_Lion_sam_ice.upload.protocol=swd 
+SmartEverything_Lion_sam_ice.upload.maximum_size=262144 
+SmartEverything_Lion_sam_ice.upload.use_1200bps_touch=false 
+SmartEverything_Lion_sam_ice.upload.wait_for_upload_port=false 
+SmartEverything_Lion_sam_ice.upload.native_usb=false 
+SmartEverything_Lion_sam_ice.build.mcu=cortex-m0plus 
+SmartEverything_Lion_sam_ice.build.f_cpu=48000000L 
+SmartEverything_Lion_sam_ice.build.usb_product="SmartEverything Lion" 
+SmartEverything_Lion_sam_ice.build.usb_manufacturer="Arrows" 
+SmartEverything_Lion_sam_ice.build.board=SAMD_SMARTEVERYTHING_LION
+SmartEverything_Lion_sam_ice.build.core=arduino:arduino 
+SmartEverything_Lion_sam_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Lion_sam_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Lion_sam_ice.build.openocdscript=openocd_scripts/variant_sam_ice.cfg 
+SmartEverything_Lion_sam_ice.build.variant=Lion
+SmartEverything_Lion_sam_ice.build.variant_system_lib= 
+SmartEverything_Lion_sam_ice.build.vid=0x2341 
+SmartEverything_Lion_sam_ice.build.pid=0xe00a
+SmartEverything_Lion_sam_ice.bootloader.tool=arduino:openocd 
+SmartEverything_Lion_sam_ice.bootloader.file=Lion/samd21_sam_ba_lion.bin 
+
+  
+SmartEverything_Lion_native.name=SmartEverything Lion (Native USB Port) 
+SmartEverything_Lion_native.vid.0=0x2341 
+SmartEverything_Lion_native.pid.0=0xe00a 
+SmartEverything_Lion_native.vid.1=0x2341 
+SmartEverything_Lion_native.pid.1=0xe009 
+SmartEverything_Lion_native.upload.tool=arduino:bossac 
+SmartEverything_Lion_native.upload.protocol=sam-ba 
+SmartEverything_Lion_native.upload.maximum_size=262144 
+SmartEverything_Lion_native.upload.use_1200bps_touch=true 
+SmartEverything_Lion_native.upload.wait_for_upload_port=true 
+SmartEverything_Lion_native.upload.native_usb=true 
+SmartEverything_Lion_native.build.mcu=cortex-m0plus 
+SmartEverything_Lion_native.build.f_cpu=48000000L 
+SmartEverything_Lion_native.build.usb_product="SmartEverything Lion" 
+SmartEverything_Lion_native.build.usb_manufacturer="Arrows" 
+SmartEverything_Lion_native.build.board=SAMD_SMARTEVERYTHING_LION
+SmartEverything_Lion_native.build.core=arduino:arduino 
+SmartEverything_Lion_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Lion_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Lion_native.build.openocdscript= 
+SmartEverything_Lion_native.build.variant=Lion
+SmartEverything_Lion_native.build.variant_system_lib= 
+SmartEverything_Lion_native.build.vid=0x2341 
+SmartEverything_Lion_native.build.pid=0xe00a 
+
+
+
+SmartEverything_Dragonfly_atmel_ice.name=SmartEverything Dragonfly (via Atmel-ICE) 
+SmartEverything_Dragonfly_atmel_ice.upload.tool=arduino:openocd 
+SmartEverything_Dragonfly_atmel_ice.upload.protocol=swd 
+SmartEverything_Dragonfly_atmel_ice.upload.maximum_size=262144 
+SmartEverything_Dragonfly_atmel_ice.upload.use_1200bps_touch=false 
+SmartEverything_Dragonfly_atmel_ice.upload.wait_for_upload_port=false 
+SmartEverything_Dragonfly_atmel_ice.upload.native_usb=false 
+SmartEverything_Dragonfly_atmel_ice.build.mcu=cortex-m0plus 
+SmartEverything_Dragonfly_atmel_ice.build.f_cpu=48000000L 
+SmartEverything_Dragonfly_atmel_ice.build.usb_product="SmartEverything Dragonfly" 
+SmartEverything_Dragonfly_atmel_ice.build.usb_manufacturer="Axelelettronica" 
+SmartEverything_Dragonfly_atmel_ice.build.board=SAMD_SMARTEVERYTHING_DRAGONFLY
+SmartEverything_Dragonfly_atmel_ice.build.core=arduino:arduino 
+SmartEverything_Dragonfly_atmel_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Dragonfly_atmel_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Dragonfly_atmel_ice.build.openocdscript=openocd_scripts/variant_atmel_ice.cfg 
+SmartEverything_Dragonfly_atmel_ice.build.variant=Dragonfly 
+SmartEverything_Dragonfly_atmel_ice.build.variant_system_lib= 
+SmartEverything_Dragonfly_atmel_ice.build.vid=0x2341 
+SmartEverything_Dragonfly_atmel_ice.build.pid=0xe006 
+SmartEverything_Dragonfly_atmel_ice.bootloader.tool=arduino:openocd 
+SmartEverything_Dragonfly_atmel_ice.bootloader.file=Dragonfly/samd21_sam_ba_dragonfly.bin 
+
+ 
+SmartEverything_Dragonfly_sam_ice.name=SmartEverything Dragonfly (via SAM-ICE) 
+SmartEverything_Dragonfly_sam_ice.upload.tool=arduino:openocd 
+SmartEverything_Dragonfly_sam_ice.upload.protocol=swd 
+SmartEverything_Dragonfly_sam_ice.upload.maximum_size=262144 
+SmartEverything_Dragonfly_sam_ice.upload.use_1200bps_touch=false 
+SmartEverything_Dragonfly_sam_ice.upload.wait_for_upload_port=false 
+SmartEverything_Dragonfly_sam_ice.upload.native_usb=false 
+SmartEverything_Dragonfly_sam_ice.build.mcu=cortex-m0plus 
+SmartEverything_Dragonfly_sam_ice.build.f_cpu=48000000L 
+SmartEverything_Dragonfly_sam_ice.build.usb_product="SmartEverything Dragonfly" 
+SmartEverything_Dragonfly_sam_ice.build.usb_manufacturer="Axelelettronica" 
+SmartEverything_Dragonfly_sam_ice.build.board=SAMD_SMARTEVERYTHING_DRAGONFLY
+SmartEverything_Dragonfly_sam_ice.build.core=arduino:arduino 
+SmartEverything_Dragonfly_sam_ice.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Dragonfly_sam_ice.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Dragonfly_sam_ice.build.openocdscript=openocd_scripts/variant_sam_ice.cfg 
+SmartEverything_Dragonfly_sam_ice.build.variant=Dragonfly
+SmartEverything_Dragonfly_sam_ice.build.variant_system_lib= 
+SmartEverything_Dragonfly_sam_ice.build.vid=0x2341 
+SmartEverything_Dragonfly_sam_ice.build.pid=0xe006
+SmartEverything_Dragonfly_sam_ice.bootloader.tool=arduino:openocd 
+SmartEverything_Dragonfly_sam_ice.bootloader.file=Dragonfly/samd21_sam_ba_dragonfly.bin 
+
+  
+SmartEverything_Dragonfly_native.name=SmartEverything Dragonfly (Native USB Port) 
+SmartEverything_Dragonfly_native.vid.0=0x2341 
+SmartEverything_Dragonfly_native.pid.0=0xe006
+SmartEverything_Dragonfly_native.vid.1=0x2341 
+SmartEverything_Dragonfly_native.pid.1=0xe005
+SmartEverything_Dragonfly_native.upload.tool=arduino:bossac 
+SmartEverything_Dragonfly_native.upload.protocol=sam-ba 
+SmartEverything_Dragonfly_native.upload.maximum_size=262144 
+SmartEverything_Dragonfly_native.upload.use_1200bps_touch=true 
+SmartEverything_Dragonfly_native.upload.wait_for_upload_port=true 
+SmartEverything_Dragonfly_native.upload.native_usb=true 
+SmartEverything_Dragonfly_native.build.mcu=cortex-m0plus 
+SmartEverything_Dragonfly_native.build.f_cpu=48000000L 
+SmartEverything_Dragonfly_native.build.usb_product="SmartEverything Dragonfly" 
+SmartEverything_Dragonfly_native.build.usb_manufacturer="Axelelettronica" 
+SmartEverything_Dragonfly_native.build.board=SAMD_SMARTEVERYTHING_DRAGONFLY
+SmartEverything_Dragonfly_native.build.core=arduino:arduino 
+SmartEverything_Dragonfly_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Dragonfly_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Dragonfly_native.build.openocdscript= 
+SmartEverything_Dragonfly_native.build.variant=Dragonfly
+SmartEverything_Dragonfly_native.build.variant_system_lib= 
+SmartEverything_Dragonfly_native.build.vid=0x2341 
+SmartEverything_Dragonfly_native.build.pid=0xe006
