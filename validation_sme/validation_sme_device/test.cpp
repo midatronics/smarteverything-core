@@ -1,144 +1,85 @@
+/*
+  SerialCommunication.ino
+
+  Example demonstrating a BLE Bidirectional communication between a PC/Smartphone App (Central BLE device)
+  and the SmartEveryting USB console (Peripheral BLE)
+
+  - Serial -> BLE : Any character edited on the USB Arduino console will be sent via BLE  
+                    on the attribute 0xFFF4 to the central device.
+                    NOTICE: The Host needs to subscribe to 0xFFF4 attribute to get notified.
+
+  - BLE -> Serial : Any character written by the Central device, on the writable attribute 0xFFF3, 
+                    is showed on the Arduino console.
+                    NOTICE: The protocol to be used is <len> <char 1> <char 2> ... <char len>
+
+  Created: 07/07/2016 10:32:11 PM
+
+  Author: development@axelelettronica.it
+
+ */
 #include <Arduino.h>
-#include <rn2483.h>
+#include "rn4870.h"
 
-char buffer[100];
+bool ledLigth = false;
+char bufferAnswer[100];
 
+static void ledOn(bool ligthOn) {
+#ifdef ARDUINO_SAMD_SMARTEVERYTHING
+    ledYellowOneLight(ligthOn);
+#else
+    pinMode(PIN_LED, OUTPUT);
+    digitalWrite(PIN_LED, ligthOn);
+#endif
+}
+
+const char *mac;
 void setup() {
+    int i =0;
+    SerialUSB.begin(115200);
 
-    bool err = false;
+#ifndef ARDUINO_SAMD_SMARTEVERYTHING
+    pinMode(PIN_LED, OUTPUT);
+#endif
 
-    Serial1.begin(115200);
-    lora.init();
+    ble_rn4870.begin(bufferAnswer, sizeof(bufferAnswer));
+
     delay(100);
-
-    while (!Serial1) {
+    while (!SerialUSB) {
         ;
     }
 
-    // first time get from Hw
-    lora.getVersion();
-    
-    Serial1.print("FW Version :");
-    Serial1.println(lora.getVersion());
-    // Read Power
-    Serial1.print("\nVdd is: ");
-    Serial1.print(lora.getPower());
-    Serial1.println(" mV");
+    ledOn(ledLigth);
+    ledLigth = !ledLigth;
 
-    // Read HwEUI
-    Serial1.print("DEV EUI :");
-    Serial1.println(lora.getHwEUI());
-    // Read AppEUI
-    Serial1.print("APP EUI :");
-    Serial1.println(lora.getMacAppEUI());
-    
-     // Read HwEUI
-     Serial1.println("Writing DEV EUI");
-     err = lora.macSetDevEUICmd("0004A30B001A2A9E");
-    //if (err) {
-    //    Serial1.println("\Failed writing Dev EUI");
-    //}
-     // Read AppEUI
-     Serial1.println("Writing APP EUI");
-     err = lora.macSetAppEUICmd("F000000000000000");
+    if (!ble_rn4870.startBLE()) {
+        SerialUSB.println("Cannot Start the BLE");
+    } else {
+        SerialUSB.print("Start the BLE with ");
+        mac = ble_rn4870.getAddress();
+        for (i=0; i<5; i++){
+            SerialUSB.print(mac[i], HEX);
+            SerialUSB.print('-');
+        }        
+        SerialUSB.print(mac[5], HEX);
 
-    if (err) {
-        Serial1.println("\nFailed writing APP EUI");
-    }
-    err = lora.macSetAppKeyCmd("00112233445566778899AABBCCDDEEFF");
-    if (err) {
-        Serial1.println("\nFailed writing APP Key");
-    }
-    
+        SerialUSB.println(" address");
 
-     // Read HwEUI
-    // Serial1.print("DEV EUI :");
-    // Serial1.println(lora.getHwEUI());
-     // Read AppEUI
-     Serial1.print("APP EUI :");
-     Serial1.println(lora.getMacAppEUI());   
-    
-    // Read Radio modulation Mode
-    Serial1.print("\nRadio is in mode: ");
-    radioModeE radio = lora.getRadioMode();
-    if (radio == LoRa) {
-        Serial1.println("LoRa");
-        } else if (radio == FSK) {
-        Serial1.println("FSK");
     }
-    
-     while (lora.macJoinCmd(OTAA)) {
-        Serial1.print("\nOTA JOIN FAILED: ");
-        delay(5000);
-     }     
+
 }
 
 void loop() {
-    
-/*
-    // Change EEProm
-    Serial1.println("\n change data on EEProm address.");
-    Serial1.println("ATTENTION this will change your EEProm, do U want to continue [Y/n] ?");
-    int answer='a';
+    char data;
+    char readData = 0;
 
-    do {
-        delay(100);
-
-        if (Serial1.available()) {
-            answer = Serial1.read();
-        }
-    } while ((answer != 'Y') && (answer != 'n'));
-
-    if ('Y' == answer) {
-        Serial1.println(lora.setUserEEprom(0, 0x01));
-        Serial1.println(lora.setUserEEprom(0x1A, 00));
-        Serial1.println(lora.setUserEEprom(0x30, 0x7E));
-        Serial1.print("get EEProm (0x00): ");
-        Serial1.println(lora.getUserEEprom(0), HEX);
-        Serial1.print("get EEProm (0x100): ");
-        Serial1.println(lora.getUserEEprom(0x1A), HEX);
-        Serial1.print("get EEProm (0x300): ");
-        Serial1.println(lora.getUserEEprom(0x30), HEX);
+    // compose the command to send
+    if (SerialUSB.available()) {
+        data = SerialUSB.read();
+        ble_rn4870.sendData(&data, 1);
     }
 
-    // Change EEProm
-    Serial1.println("\n change radio mode in (L)ora or (F)sk") ;
-    Serial1.println(" do U want to continue [L/F] ?");
-    answer='a';
-
-    do {
-        delay(100);
-
-        if (Serial1.available()) {
-            answer = Serial1.read();
-        }
-    } while ((answer != 'L') && (answer != 'F'));
-
-    if ('L' == answer) {
-        ok = lora.setRadioMode(LORA_MODE);
-        } else if ('F' == answer) {
-        ok = lora.setRadioMode(FSK_MODE);
-    }
-    delay(100);
-
-    */
-
-
-    //endless loop
-    while(1){
-        //String data;
-        if (lora.available()) {
-           Serial1.print("\nRx> ");  
-           Serial1.println(lora.read());
-
-        }
-
-
-        //lora.macTxCmd("0123");
-        lora.macTxCmd("0123", 1, TX_ACK);
-        delay(1000);
-        ;
+    // collect the Answer from BLE
+    if (ble_rn4870.hasAnswer()==dataAnswer) {
+        SerialUSB.write(ble_rn4870.getLastAnswer());
     }
 }
-
-
