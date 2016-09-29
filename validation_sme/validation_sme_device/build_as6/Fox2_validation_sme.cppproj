@@ -278,7 +278,6 @@
   <ItemGroup>
     <Folder Include="core\USB" />
     <Folder Include="core" />
-    <Folder Include="RN2483" />
     <Folder Include="Wire" />
     <Folder Include="SPI" />
     <Folder Include="variant" />
@@ -563,18 +562,6 @@
     <Compile Include="..\..\..\..\ArduinoCore-samd\libraries\Wire\Wire.h">
       <SubType>compile</SubType>
       <Link>Wire\Wire.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\smeLibraries\sme-RN2483-library\sme-rn2483-library\src\lora\rn2483.cpp">
-      <SubType>compile</SubType>
-      <Link>RN2483\rn2483.cpp</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\smeLibraries\sme-RN2483-library\sme-rn2483-library\src\lora\rn2483Model.h">
-      <SubType>compile</SubType>
-      <Link>RN2483\rn2483Model.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\smeLibraries\sme-RN2483-library\sme-rn2483-library\src\rn2483.h">
-      <SubType>compile</SubType>
-      <Link>RN2483\rn2483.h</Link>
     </Compile>
     <Compile Include="..\..\..\variants\Fox\internalI2C.cpp">
       <SubType>compile</SubType>
