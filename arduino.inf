@@ -1,0 +1,13 @@
+%sme_fox.sketch.name%=DriverInstall, USB\VID_2341&PID_E002&MI_00
+%sme_fox.bootloader.name%=DriverInstall, USB\VID_2341&PID_E001
+%mkrDust.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
+%mkrDust.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
+%asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
+%asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+%asmeFox3.sketch.name%=DriverInstall, USB\VID_2341&PID_E008&MI_00
+%asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
+%asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
+%asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
+%asmeAdi5Axis.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%asmeAdi5Axis.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+
