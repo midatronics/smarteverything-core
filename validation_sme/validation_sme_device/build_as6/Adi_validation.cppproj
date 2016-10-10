@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.ARMGCC.CPP</ToolchainName>
-    <ProjectGuid>{b3f859ad-e162-4c2f-9684-eac6932fec80}</ProjectGuid>
+    <ProjectGuid>{0fe1d7a8-9fb9-43b9-a66d-4940b19ad506}</ProjectGuid>
     <avrdevice>ATSAMD21J18A</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>test</AssemblyName>
-    <Name>test</Name>
+    <Name>Adi_validation</Name>
     <RootNamespace>test</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
@@ -196,12 +196,11 @@
         <armgcc.compiler.directories.DefaultIncludePath>False</armgcc.compiler.directories.DefaultIncludePath>
         <armgcc.compiler.directories.IncludePaths>
           <ListValues>
-            <Value>../../../../../ArduinoZero/hardware/tools/CMSIS/Device/ATMEL</Value>
-            <Value>../../../../../ArduinoZero/hardware/tools/CMSIS/CMSIS/Include</Value>
-            <Value>../../../../../ArduinoCore-samd/hardware/arduino/samd/cores/arduino</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/tools/CMSIS/4.0.0-atmel/Device/ATMEL</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/tools/CMSIS/4.0.0-atmel/CMSIS/Include</Value>
             <Value>../../../../variants/Fox</Value>
-            <Value>../../../../../ArduinoCore-samd/hardware/arduino/samd/cores</Value>
-            <Value>../../../../../ArduinoCore-samd/cores/arduino</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/hardware/samd/1.6.6/cores/arduino/USB</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/hardware/samd/1.6.6/cores/arduino</Value>
           </ListValues>
         </armgcc.compiler.directories.IncludePaths>
         <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
@@ -223,22 +222,16 @@
         <armgcccpp.compiler.directories.DefaultIncludePath>False</armgcccpp.compiler.directories.DefaultIncludePath>
         <armgcccpp.compiler.directories.IncludePaths>
           <ListValues>
-            <Value>../../../../fox2-arduino-core/variants/Fox</Value>
-            <Value>../../../../ArduinoCore-samd/hardware/arduino/samd/cores/arduino/USB</Value>
-            <Value>../../../../ArduinoCore-samd/hardware/arduino/samd/cores/arduino</Value>
-            <Value>../../../../ArduinoCore-samd/hardware/arduino/samd/libraries/Wire</Value>
-            <Value>../../../../ArduinoCore-samd/hardware/arduino/samd/libraries/SPI</Value>
-            <Value>../../../../ArduinoZero/hardware/tools/CMSIS/Device/ATMEL</Value>
-            <Value>../../../../ArduinoZero/hardware/tools/CMSIS/CMSIS/Include</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/tools/CMSIS/4.0.0-atmel/CMSIS/Include</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/tools/CMSIS/4.0.0-atmel/Device/ATMEL</Value>
             <Value>../../../../../smeLibraries/sme-RN2483-library/sme-rn2483-library/src/lora</Value>
             <Value>../../../../../smeLibraries/sme-RN2483-library/sme-rn2483-library/src</Value>
-            <Value>../../../../../ArduinoCore-samd/hardware/arduino/samd/libraries/Wire</Value>
-            <Value>../../../../../ArduinoZero/hardware/tools/CMSIS/Device/ATMEL</Value>
-            <Value>../../../../../ArduinoZero/hardware/tools/CMSIS/CMSIS/Include</Value>
-            <Value>../../../../../ArduinoCore-samd/hardware/arduino/samd/cores/arduino</Value>
             <Value>../../../../variants/Fox</Value>
-            <Value>../../../../../ArduinoCore-samd/cores/arduino</Value>
-            <Value>%24(PackRepoDir)\atmel\SAMD21_DFP\1.0.222\samd21a\include</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/hardware/samd/1.6.6/cores/arduino/USB</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/hardware/samd/1.6.6/cores/arduino</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/hardware/samd/1.6.6/libraries/SPI</Value>
+            <Value>../../../../../../../../AppData/Local/Arduino15/packages/arduino/hardware/samd/1.6.6/libraries/Wire</Value>
+            <Value>../../../../../../../../../../MyProgram/Hw/arduino/hardware/tools</Value>
           </ListValues>
         </armgcccpp.compiler.directories.IncludePaths>
         <armgcccpp.compiler.optimization.level>Optimize (-O1)</armgcccpp.compiler.optimization.level>
@@ -283,317 +276,301 @@
     <Folder Include="variant" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\abi.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\abi.cpp">
       <SubType>compile</SubType>
       <Link>core\abi.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Arduino.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Arduino.h">
       <SubType>compile</SubType>
       <Link>core\Arduino.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\binary.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\binary.h">
       <SubType>compile</SubType>
       <Link>core\binary.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Client.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Client.h">
       <SubType>compile</SubType>
       <Link>core\Client.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\cortex_handlers.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\cortex_handlers.c">
       <SubType>compile</SubType>
       <Link>core\cortex_handlers.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\delay.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\delay.c">
       <SubType>compile</SubType>
       <Link>core\delay.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\delay.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\delay.h">
       <SubType>compile</SubType>
       <Link>core\delay.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\HardwareSerial.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\HardwareSerial.h">
       <SubType>compile</SubType>
       <Link>core\HardwareSerial.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\hooks.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\hooks.c">
       <SubType>compile</SubType>
       <Link>core\hooks.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\IPAddress.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\IPAddress.cpp">
       <SubType>compile</SubType>
       <Link>core\IPAddress.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\IPAddress.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\IPAddress.h">
       <SubType>compile</SubType>
       <Link>core\IPAddress.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\itoa.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\itoa.c">
       <SubType>compile</SubType>
       <Link>core\itoa.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\itoa.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\itoa.h">
       <SubType>compile</SubType>
       <Link>core\itoa.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\main.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\main.cpp">
       <SubType>compile</SubType>
       <Link>core\main.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\new.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\new.cpp">
       <SubType>compile</SubType>
       <Link>core\new.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Print.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Print.cpp">
       <SubType>compile</SubType>
       <Link>core\Print.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Print.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Print.h">
       <SubType>compile</SubType>
       <Link>core\Print.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Printable.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Printable.h">
       <SubType>compile</SubType>
       <Link>core\Printable.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\pulse.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\pulse.c">
       <SubType>compile</SubType>
       <Link>core\pulse.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\pulse.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\pulse.h">
       <SubType>compile</SubType>
       <Link>core\pulse.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\pulse_asm.S">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\pulse_asm.S">
       <SubType>compile</SubType>
       <Link>core\pulse_asm.S</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Reset.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Reset.cpp">
       <SubType>compile</SubType>
       <Link>core\Reset.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Reset.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Reset.h">
       <SubType>compile</SubType>
       <Link>core\Reset.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\RingBuffer.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\RingBuffer.cpp">
       <SubType>compile</SubType>
       <Link>core\RingBuffer.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\RingBuffer.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\RingBuffer.h">
       <SubType>compile</SubType>
       <Link>core\RingBuffer.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\SERCOM.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\SERCOM.cpp">
       <SubType>compile</SubType>
       <Link>core\SERCOM.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\SERCOM.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\SERCOM.h">
       <SubType>compile</SubType>
       <Link>core\SERCOM.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Server.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Server.h">
       <SubType>compile</SubType>
       <Link>core\Server.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\startup.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\startup.c">
       <SubType>compile</SubType>
       <Link>core\startup.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Stream.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Stream.cpp">
       <SubType>compile</SubType>
       <Link>core\Stream.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Stream.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Stream.h">
       <SubType>compile</SubType>
       <Link>core\Stream.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Tone.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Tone.cpp">
       <SubType>compile</SubType>
       <Link>core\Tone.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Tone.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Tone.h">
       <SubType>compile</SubType>
       <Link>core\Tone.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Uart.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Uart.cpp">
       <SubType>compile</SubType>
       <Link>core\Uart.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Uart.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Uart.h">
       <SubType>compile</SubType>
       <Link>core\Uart.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\Udp.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\Udp.h">
       <SubType>compile</SubType>
       <Link>core\Udp.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\CDC.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\CDC.cpp">
       <SubType>compile</SubType>
       <Link>core\USB\CDC.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\PluggableUSB.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\PluggableUSB.cpp">
       <SubType>compile</SubType>
       <Link>core\USB\PluggableUSB.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\PluggableUSB.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\PluggableUSB.h">
       <SubType>compile</SubType>
       <Link>core\USB\PluggableUSB.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\samd21_host.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\samd21_host.c">
       <SubType>compile</SubType>
       <Link>core\USB\samd21_host.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\samd21_host.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\samd21_host.h">
       <SubType>compile</SubType>
       <Link>core\USB\samd21_host.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\SAMD21_USBDevice.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\SAMD21_USBDevice.h">
       <SubType>compile</SubType>
       <Link>core\USB\SAMD21_USBDevice.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\USBAPI.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\USBAPI.h">
       <SubType>compile</SubType>
       <Link>core\USB\USBAPI.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\USBCore.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\USBCore.cpp">
       <SubType>compile</SubType>
       <Link>core\USB\USBCore.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\USBCore.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\USBCore.h">
       <SubType>compile</SubType>
       <Link>core\USB\USBCore.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\USBDesc.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\USBDesc.h">
       <SubType>compile</SubType>
       <Link>core\USB\USBDesc.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\USB\USB_host.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\USB\USB_host.h">
       <SubType>compile</SubType>
       <Link>core\USB\USB_host.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WCharacter.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WCharacter.h">
       <SubType>compile</SubType>
       <Link>core\WCharacter.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WInterrupts.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WInterrupts.c">
       <SubType>compile</SubType>
       <Link>core\WInterrupts.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WInterrupts.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WInterrupts.h">
       <SubType>compile</SubType>
       <Link>core\WInterrupts.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring.c">
       <SubType>compile</SubType>
       <Link>core\wiring.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring.h">
       <SubType>compile</SubType>
       <Link>core\wiring.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_analog.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_analog.c">
       <SubType>compile</SubType>
       <Link>core\wiring_analog.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_analog.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_analog.h">
       <SubType>compile</SubType>
       <Link>core\wiring_analog.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_constants.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_constants.h">
       <SubType>compile</SubType>
       <Link>core\wiring_constants.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_digital.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_digital.c">
       <SubType>compile</SubType>
       <Link>core\wiring_digital.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_digital.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_digital.h">
       <SubType>compile</SubType>
       <Link>core\wiring_digital.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_private.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_private.c">
       <SubType>compile</SubType>
       <Link>core\wiring_private.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_private.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_private.h">
       <SubType>compile</SubType>
       <Link>core\wiring_private.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_shift.c">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_shift.c">
       <SubType>compile</SubType>
       <Link>core\wiring_shift.c</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\wiring_shift.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\wiring_shift.h">
       <SubType>compile</SubType>
       <Link>core\wiring_shift.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WMath.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WMath.cpp">
       <SubType>compile</SubType>
       <Link>core\WMath.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WMath.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WMath.h">
       <SubType>compile</SubType>
       <Link>core\WMath.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WString.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WString.cpp">
       <SubType>compile</SubType>
       <Link>core\WString.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WString.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WString.h">
       <SubType>compile</SubType>
       <Link>core\WString.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\cores\arduino\WVariant.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\cores\arduino\WVariant.h">
       <SubType>compile</SubType>
       <Link>core\WVariant.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\libraries\SPI\SPI.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\libraries\SPI\SPI.cpp">
       <SubType>compile</SubType>
       <Link>SPI\SPI.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\libraries\SPI\SPI.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\libraries\SPI\SPI.h">
       <SubType>compile</SubType>
       <Link>SPI\SPI.h</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\libraries\Wire\Wire.cpp">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\libraries\Wire\Wire.cpp">
       <SubType>compile</SubType>
       <Link>Wire\Wire.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\..\ArduinoCore-samd\libraries\Wire\Wire.h">
+    <Compile Include="..\..\..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\samd\1.6.6\libraries\Wire\Wire.h">
       <SubType>compile</SubType>
       <Link>Wire\Wire.h</Link>
     </Compile>
-    <Compile Include="..\..\..\variants\Fox\internalI2C.cpp">
-      <SubType>compile</SubType>
-      <Link>variant\internalI2C.cpp</Link>
-    </Compile>
-    <Compile Include="..\..\..\variants\Fox\internalI2C.h">
-      <SubType>compile</SubType>
-      <Link>variant\internalI2C.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\variants\Fox\pins_arduino.h">
+    <Compile Include="..\..\..\variants\adi\pins_arduino.h">
       <SubType>compile</SubType>
       <Link>variant\pins_arduino.h</Link>
     </Compile>
-    <Compile Include="..\..\..\variants\Fox\variant.cpp">
+    <Compile Include="..\..\..\variants\adi\variant.cpp">
       <SubType>compile</SubType>
       <Link>variant\variant.cpp</Link>
     </Compile>
-    <Compile Include="..\..\..\variants\Fox\variant.h">
+    <Compile Include="..\..\..\variants\adi\variant.h">
       <SubType>compile</SubType>
       <Link>variant\variant.h</Link>
     </Compile>
-    <Compile Include="..\..\..\variants\Fox\variantInit.cpp">
+    <Compile Include="..\..\..\variants\adi\variantInit.cpp">
       <SubType>compile</SubType>
       <Link>variant\variantInit.cpp</Link>
-    </Compile>
-    <Compile Include="..\..\..\variants\Fox\WireIoExt.cpp">
-      <SubType>compile</SubType>
-      <Link>variant\WireIoExt.cpp</Link>
-    </Compile>
-    <Compile Include="..\..\..\variants\Fox\WireIoExt.h">
-      <SubType>compile</SubType>
-      <Link>variant\WireIoExt.h</Link>
     </Compile>
     <Compile Include="..\test.cpp">
       <SubType>compile</SubType>

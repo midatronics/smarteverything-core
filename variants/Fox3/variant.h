@@ -23,6 +23,8 @@
 /*----------------------------------------------------------------------------
  *        Definitions
  *----------------------------------------------------------------------------*/
+#define ASME3_REVISION
+
 
 /** Frequency of the board main oscillator */
 #define VARIANT_MAINOSC		(32768ul)
@@ -78,30 +80,13 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_RED          (45u)
-#define PIN_LED_GREEN        (46u)
-#define PIN_LED_BLUE         (47u)
-#define PIN_LED_13           PIN_LED_GREEN
+#define PIN_LED_13           (13u)
 #define PIN_LED_RXL          (26u)
-#define PIN_LED_TXL          (27u)
+#define PIN_LED_TXL          (25u)
 #define PIN_LED              PIN_LED_13
 #define PIN_LED2             PIN_LED_RXL
 #define PIN_LED3             PIN_LED_TXL
 #define LED_BUILTIN          PIN_LED_13
-
-// I/O Extender
-#define PIN_IO_EXT_RST      (48u)
-#define PIN_IO_EXT_INT      (49u)
-
-
-// Step-Up Power
-#define PIN_EXT_PWR         (50u)
-#define PIN_REG_ON          (51u)
-
-// User Button
-#define PIN_SME_BUTTON1        (41u)
-#define PIN_SME_BUTTON2        (42u)
-
 
 /*
  * Analog pins
@@ -125,26 +110,29 @@ static const uint8_t A5  = PIN_A5 ;
  * Serial interfaces
  */
 // GPS
-#define PIN_GPS_TX           (31ul)
-#define PIN_GPS_RX           (32ul)
+#define PIN_GPS_TX           (32ul)
+#define PIN_GPS_RX           (33ul)
 #define PAD_GPS_TX           (UART_TX_PAD_0)
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
-// BLE
-#define PIN_BLE_TX           (37ul)
-#define PIN_BLE_RX           (38ul)
-#define PIN_BLE_RTS          (39ul)
-#define PIN_BLE_CTS          (40ul)
-#define PAD_BLE_TX           (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_BLE_RX           (SERCOM_RX_PAD_1)
-
 // SigFox
-#define PIN_SIGFOX_RX        (33ul)
 #define PIN_SIGFOX_TX        (34ul)
-#define PIN_SIGFOX_RTS       (35ul)
-#define PIN_SIGFOX_CTS       (36ul)
+#define PIN_SIGFOX_RX        (35ul)
+#define PIN_SIGFOX_RTS       (36ul)
+#define PIN_SIGFOX_CTS       (37ul)
+#define PIN_SIGFOX_RADIO_STS (38ul)
+#define PIN_SIGFOX_STDBY_STS (39ul)
+#define PIN_SIGFOX_WAKEUP    (40ul)
 #define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
 #define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
+
+// BLE
+#define PIN_BLE_TX           (41ul)
+#define PIN_BLE_RX           (42ul)
+#define PIN_BLE_RTS          (43ul)
+#define PIN_BLE_CTS          (44ul)
+#define PAD_BLE_TX           (UART_TX_RTS_CTS_PAD_0_2_3)
+#define PAD_BLE_RX           (SERCOM_RX_PAD_1)
 
 // Serial1
 #define PIN_SERIAL1_RX       (0ul)
@@ -184,30 +172,20 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE  (28ul)
-#define PIN_USB_DM           (29ul)
-#define PIN_USB_DP           (30ul)
+#define PIN_USB_HOST_ENABLE  (27ul)
+#define PIN_USB_DM           (28ul)
+#define PIN_USB_DP           (29ul)
 
-/*
-    RGB wrapper function
-    These functions has been created for a more comfortable use 
-      because internally wrap the inversion of the HIGH, LOW meaning.
-    Using these function it remain the same Arduino User Experience to light a led.
 
-    parameter:
-    value = the light intensity. It could be 
-            HIGH   = light to the maximum level
-            LOW    = switch off the Led
-            1..255 = pwm value for different level of light
- */
-void ledGreenLight(uint32_t value);
-void ledRedLight(uint32_t value);
-void ledBlueLight(uint32_t value);
+// IoExtender
+#define PIN_RESET_COMPONENT (30u)
+#define PIN_IOE_INT         (31u)
 
-/*
-    Wrapper to flash the RGB Led light red or blue or green for X milliseconds
-*/
-void flashRGBLed(uint32_t color, uint32_t time_in_ms);
+// External Battery
+#define PIN_EXT_PWR      (46u)
+#define PIN_LIPO_MON     (47u)
+#define PIN_BATT_MON     (48u)
+#define PIN_ENA_MON      (49u)
 
 /*
     Yellow Led wrapper function
@@ -222,25 +200,6 @@ void flashRGBLed(uint32_t color, uint32_t time_in_ms);
 void ledYellowOneLight(uint32_t value);
 void ledYellowTwoLight(uint32_t value);
 
-/*
-    User Button wrapper function.
-
-    return:
-    1 = button PRESSED
-    0 = button RELEASED
-*/
-int isButtonOnePressed(void);
-int isButtonTwoPressed(void);
-
-
-/*
-    Enable/Disable the StepUp
-    
-    param:
-    true = Step-up the Battery Power
-    false= Do not Step-up the Battery Power
-*/
-void setStepUp(uint32_t on);
 
 /*
     Return the information if the StepUp is enabled
@@ -255,14 +214,25 @@ bool isOnBattery(void);
 /*
  * FORCE-ON (only SE868-A)
 Force-ON is an input signal that can be used to wake up the SE868-A from the sleep mode. 
-It is internally pulled-up. It has active-low logic, i.e. the module wakes up when FORCE_ON is tied to ground. When inactive, it should be left open drain or open collector.
+It is internally pulled-up. It has active-low logic, i.e. the module wakes up when FORCE_ON is tied to ground. 
+When inactive, it should be left open drain or open collector.
 
 Note:
 keeping FORCE_ON tied to ground won’t prevent the SE868-A from going into sleep mode, since this signal is sensitive only to the high-low transition.
 No pull-up circuits are allowed on the FORCE_ON pin, since the signal is already internally pulled up.
 */
-void gpsForceOn(void);
+void gpsWakeup(void);
+void gpsSleep(void);
 
+/*
+ * The function resets all the component mounted on the base 
+ *      GPS
+ *      SigFox
+ *      BLE
+ * The reset is executed by a LOW signal.
+ * The function move LOW the signal for a while and than move up again.
+ */
+void resetBaseComponent(void);
 
 void sfxSleep(void);
 void sfxWakeup(void);
@@ -293,7 +263,7 @@ extern Uart Serial1;
 
 extern Uart GPS;
 extern Uart BLE;
-extern Uart SigFox;
+extern Uart iotAntenna;
 
 #endif
 
@@ -319,14 +289,18 @@ extern Uart SigFox;
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
 
-#define LED_GREEN_INIT  pinMode(PIN_LED_GREEN, OUTPUT)
-#define LED_RED_INIT    pinMode(PIN_LED_RED, OUTPUT)
-#define LED_BLUE_INIT   pinMode(PIN_LED_BLUE, OUTPUT)
-
 #define LED_YELLOW_TWO_INIT  pinMode(PIN_LED_RXL, OUTPUT)
 #define LED_YELLOW_ONE_INIT  pinMode(PIN_LED_TXL, OUTPUT)
 
 
 extern uint8_t smeInitError;
+
+#define IOEXT_ERR       0b10000000
+#define IOEXT_CONF_ERR  0b01000000
+#define IOEXT_INIT_ERR  0b00100000
+
+// Alias Serial to SerialUSB
+#define Serial                      SerialUSB
+
 #endif /* _VARIANT_AMEL_SMARTEVERYTHING_ */
 
