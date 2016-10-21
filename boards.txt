@@ -87,7 +87,7 @@ SmartEverything_Fox3_atmel_ice.build.variant_system_lib=
 SmartEverything_Fox3_atmel_ice.build.vid=0x2341 
 SmartEverything_Fox3_atmel_ice.build.pid=0xe008 
 SmartEverything_Fox3_atmel_ice.bootloader.tool=arduino:openocd 
-SmartEverything_Fox3_atmel_ice.bootloader.file=Fox/samd21_sam_ba_fox.bin 
+SmartEverything_Fox3_atmel_ice.bootloader.file=fox_boot.bin 
 
 SmartEverything_Fox3_native.name=SmartEverything Fox (Native USB Port) 
 SmartEverything_Fox3_native.vid.0=0x2341 
@@ -138,7 +138,7 @@ SmartEverything_Lion_atmel_ice.build.variant_system_lib=
 SmartEverything_Lion_atmel_ice.build.vid=0x2341 
 SmartEverything_Lion_atmel_ice.build.pid=0xe00a 
 SmartEverything_Lion_atmel_ice.bootloader.tool=arduino:openocd 
-SmartEverything_Lion_atmel_ice.bootloader.file=Lion/samd21_sam_ba_lion.bin 
+SmartEverything_Lion_atmel_ice.bootloader.file=lion_boot.bin 
 
 SmartEverything_Lion_native.name=SmartEverything Lion (Native USB Port) 
 SmartEverything_Lion_native.vid.0=0x2341 
@@ -240,7 +240,7 @@ adi_atmel_ice.build.variant=adi
 adi_atmel_ice.build.vid=0x2341
 adi_atmel_ice.build.pid=0xe00C
 adi_atmel_ice.bootloader.tool=openocd
-adi_atmel_ice.bootloader.file=adi/samd21_sam_ba_adi.bin
+adi_atmel_ice.bootloader.file=adi.bin
 
 adi_native.name=Analog ADI (Native USB Port)
 adi_native.vid.0=0x2341
