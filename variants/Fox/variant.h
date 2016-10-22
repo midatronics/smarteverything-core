@@ -326,6 +326,9 @@ extern Uart SigFox;
 #define LED_YELLOW_TWO_INIT  pinMode(PIN_LED_RXL, OUTPUT)
 #define LED_YELLOW_ONE_INIT  pinMode(PIN_LED_TXL, OUTPUT)
 
+// Alias Serial to SerialUSB
+#define Serial                      SerialUSB
+
 
 extern uint8_t smeInitError;
 #endif /* _VARIANT_AMEL_SMARTEVERYTHING_ */
