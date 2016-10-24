@@ -116,16 +116,16 @@ static const uint8_t A5  = PIN_A5 ;
 #define PAD_GPS_TX           (UART_TX_PAD_0)
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
-// SigFox
-#define PIN_SIGFOX_RX        (34ul)
-#define PIN_SIGFOX_TX        (35ul)
-#define PIN_SIGFOX_RTS       (36ul)
-#define PIN_SIGFOX_CTS       (37ul)
-#define PIN_SIGFOX_RADIO_STS (38ul)
-#define PIN_SIGFOX_STDBY_STS (39ul)
-#define PIN_SIGFOX_WAKEUP    (40ul)
-#define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
+// Lora
+#define PIN_LORA_RX        (34ul)
+#define PIN_LORA_TX        (35ul)
+#define PIN_LORA_RTS       (36ul)
+#define PIN_LORA_CTS       (37ul)
+#define PIN_LORA_GPIO0 (38ul)
+#define PIN_LORA_GPIO1 (39ul)
+#define PIN_LORA_GPIO2    (40ul)
+#define PAD_LORA_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
+#define PAD_LORA_RX        (SERCOM_RX_PAD_1)
 
 // BLE
 #define PIN_BLE_TX           (41ul)
@@ -235,8 +235,8 @@ void gpsSleep(void);
  */
 void resetBaseComponent(void);
 
-void sfxSleep(void);
-void sfxWakeup(void);
+void loraSleep(void);
+void loraWakeup(void);
 
 #ifdef __cplusplus
 }
@@ -300,6 +300,8 @@ extern uint8_t smeInitError;
 #define IOEXT_CONF_ERR  0b01000000
 #define IOEXT_INIT_ERR  0b00100000
 
+// Alias Serial to SerialUSB
+#define Serial                      SerialUSB
 
 #endif /* _VARIANT_AMEL_SMARTEVERYTHING_ */
 

@@ -19,13 +19,17 @@
  */
 #include <Arduino.h>
 
-
-const char *mac;
 void setup() {
     
 
 }
 
 void loop() {
-
+       delay(1000);
+       ledYellowTwoLight(HIGH); // turn the LED on
+      // lora.macTxCmd("0123", 1, TX_ACK);
+       // SEVE
+       //lora.macTxCmd("0123",1);
+       delay(1000);
+       ledYellowTwoLight(LOW); // turn the LED off
 }

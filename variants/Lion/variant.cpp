@@ -175,22 +175,22 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | SigFox           |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 34         |                  |  PB12  | SFX_TXD         | *SERCOM4/PAD[0]
- * | 35         |                  |  PB13  | SFX_RXD         | *SERCOM4/PAD[1]
- * | 36         |                  |  PB14  | SFX_RTS         | *SERCOM4/PAD[2]
- * | 37         |                  |  PB15  | SFX_CTS         | *SERCOM4/PAD[3]
- * | 38         |                  |  PB07  | RADIO_STS       | 
- * | 39         |                  |  PB10  | STDBY_STS       | 
- * | 40         |                  |  PB11  | WAKEUP         | 
+ * | 34         |                  |  PB12  | LORA_TXD        | *SERCOM4/PAD[0]
+ * | 35         |                  |  PB13  | LORA_RXD        | *SERCOM4/PAD[1]
+ * | 36         |                  |  PB14  | LORA_RTS        | *SERCOM4/PAD[2]
+ * | 37         |                  |  PB15  | LORA_CTS        | *SERCOM4/PAD[3]
+ * | 38         |                  |  PB07  | LORA_GPIO0      | 
+ * | 39         |                  |  PB10  | LORA_GPIO1      | 
+ * | 40         |                  |  PB11  | LORA_GPIO2      | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB, 12, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // TX: SERCOM4/PAD[0]
   { PORTB, 13, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RX: SERCOM4/PAD[1]
   { PORTB, 14, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RTS: SERCOM4/PAD[2]
   { PORTB, 15, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // CTS: SERCOM4/PAD[3]
-  { PORTB, 07, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RADIO_STS
-  { PORTB, 10, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // STDBY_STS
-  { PORTB, 11, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // WAKEUP
+  { PORTB, 07, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // GPIO0
+  { PORTB, 10, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // GPIO1
+  { PORTB, 11, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // GPIO2
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | BLE              |        |                 |
@@ -252,7 +252,7 @@ Uart Serial1( &sercom0, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERI
 
 Uart GPS( &sercom2, PIN_GPS_RX, PIN_GPS_TX, PAD_GPS_RX, PAD_GPS_TX ) ;
 Uart BLE( &sercom5, PIN_BLE_RX, PIN_BLE_TX, PAD_BLE_RX, PAD_BLE_TX ) ;
-Uart iotAntenna( &sercom4, PIN_SIGFOX_RX, PIN_SIGFOX_TX, PAD_SIGFOX_RX, PAD_SIGFOX_TX ) ;
+Uart iotAntenna( &sercom4, PIN_LORA_RX, PIN_LORA_TX, PAD_LORA_RX, PAD_LORA_TX ) ;
 
 void SERCOM0_Handler()
 {
@@ -309,23 +309,14 @@ void gpsSleep(void) {
 }
 
 
-/*
-Output signal which indicates the status of the radio. 
-Set to VCC during radio transmission or as soon as a radio frame is detected with correct synchronization word. 
-The signals returns to GND at the end of transmission or as soon as the frame reception is finished.
-*/
-bool isSFXMsgOnAir(void) {
-    return digitalRead(PIN_SIGFOX_RADIO_STS);
+#define  RN2483_SET_SLEEP_CMD    "sys sleep 4294967296\r\n"    // Sleep
+void loraSleep(void)
+{
+     // TBD Put loRA in Sleep
+     iotAntenna.print(RN2483_SET_SLEEP_CMD);   
 }
 
-void sfxSleep(void){
-
-    digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
-    
-}
-
-void sfxWakeup(void){
-
-     digitalWrite(PIN_SIGFOX_WAKEUP, LOW);   // Wakeup SFX
-     
+void loraWakeup(void)
+{
+    // TBD  break condition + 0x55
 }
