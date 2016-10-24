@@ -109,7 +109,6 @@ void initVariant() {
     pinMode(PIN_RESET_COMPONENT, OUTPUT);
     digitalWrite(PIN_RESET_COMPONENT, HIGH);
     
-    //configureSFXPin();
     
     // reset the base component
     resetBaseComponent();
