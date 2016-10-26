@@ -3,7 +3,7 @@
 Arduino core for Smart Everything board
 
 ---
-## v2.0.0 Second Release 18-Dec-2015
+## v2.0.0 Fourth Release 26-Oct-2016
 End of Support for SmartEverything Fox
 
 first release for  SmartEverything:
@@ -11,6 +11,13 @@ first release for  SmartEverything:
 - Fox3
 - Base core for the SmartEverything NXP-ST Shield
 https://github.com/axelelettronica/sme-nxp-st-library
+
+
+##v1.2.0. Third Release 11-May-2015
+- Added SmartTutto unit .
+- Internal change to move the board from AMEL-Tech to Arrow in the BoardManager.
+- Minor change in variantInit to make the 2 unit compatible.
+
 
 ## v1.1.0 Second Release 18-Dec-2015
 * Add new function to flash the RGB LED light for X milliseconds<br>
