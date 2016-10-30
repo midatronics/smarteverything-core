@@ -32,13 +32,7 @@ static void setInitGPS(void)
     // set GPS in standby
     gpsSleep();
 }
-/*
-static void configureSFXPin(void) {
-    pinMode(PIN_SIGFOX_WAKEUP, OUTPUT);
-    pinMode(PIN_SIGFOX_STDBY_STS, OUTPUT);
-    pinMode(PIN_SIGFOX_RADIO_STS, OUTPUT);
-}
-*/
+
 
 void resetBaseComponent() {
     digitalWrite(PIN_RESET_COMPONENT, LOW);
