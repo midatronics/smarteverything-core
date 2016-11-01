@@ -81,9 +81,9 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_13           (26u)
+#define PIN_LED_13           (13u)
 #define PIN_LED_RXL          (26u)
-#define PIN_LED_TXL          (27u)
+#define PIN_LED_TXL          (25u)
 #define PIN_LED              PIN_LED_13
 #define PIN_LED2             PIN_LED_RXL
 #define PIN_LED3             PIN_LED_TXL
@@ -117,15 +117,15 @@ static const uint8_t A5  = PIN_A5 ;
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
 // Lora
-#define PIN_LORA_RX        (34ul)
-#define PIN_LORA_TX        (35ul)
-#define PIN_LORA_RTS       (36ul)
-#define PIN_LORA_CTS       (37ul)
-#define PIN_LORA_GPIO0 (38ul)
-#define PIN_LORA_GPIO1 (39ul)
-#define PIN_LORA_GPIO2    (40ul)
-#define PAD_LORA_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_LORA_RX        (SERCOM_RX_PAD_1)
+#define PIN_LORA_RX          (34ul)
+#define PIN_LORA_TX          (35ul)
+#define PIN_LORA_RTS         (36ul)
+#define PIN_LORA_CTS         (37ul)
+#define PIN_LORA_GPIO0       (38ul)
+#define PIN_LORA_GPIO1       (39ul)
+#define PIN_LORA_GPIO2       (40ul)
+#define PAD_LORA_TX          (UART_TX_RTS_CTS_PAD_0_2_3)
+#define PAD_LORA_RX          (SERCOM_RX_PAD_1)
 
 // BLE
 #define PIN_BLE_TX           (41ul)
