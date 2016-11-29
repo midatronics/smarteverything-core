@@ -153,11 +153,11 @@ static const uint8_t ATN = PIN_ATN;
 #define PIN_SPI_MISO         (22u)
 #define PIN_SPI_MOSI         (23u)
 #define PIN_SPI_SCK          (24u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_2_SCK_3
-#define PAD_SPI_RX           SERCOM_RX_PAD_0
+#define PERIPH_SPI           sercom1
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI_RX           SERCOM_RX_PAD_3
 
-#define PIN_SPI_SS           (25u)
+#define PIN_SPI_SS           (51u)
 
 static const uint8_t SS	  = PIN_SPI_SS ;
 static const uint8_t MOSI = PIN_SPI_MOSI ;

@@ -86,12 +86,15 @@ void initVariant() {
     // initialization the two Yellow Led
     LED_YELLOW_ONE_INIT;
     LED_YELLOW_TWO_INIT;
-    
-    // Configure specific Fox2 Pin
+
+    // Light Led OFF
+    ledYellowOneLight(LOW);
+    ledYellowTwoLight(LOW);
+
     
     // initialize The EXT_PWR Pin as input
     // it will be HIGH when the battery is not connected
-    pinMode(PIN_EXT_PWR, INPUT_PULLDOWN); 
+    pinMode(PIN_EXT_PWR, INPUT_PULLUP); 
     
     // initialize the battery monitor
     pinMode(PIN_BATT_MON, INPUT);
