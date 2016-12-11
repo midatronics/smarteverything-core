@@ -111,19 +111,22 @@ static const uint8_t SCK  = PIN_SPI_SCK;
 #define PIN_SPI1_MISO (29u)
 #define PIN_SPI1_MOSI (26u)
 #define PIN_SPI1_SCK  (27u)
-// ADXRS290
-#define PIN_SPI1_CS0  (28u)
-#define PIN_SPI1_EINT15  (30u)
-// ADXL362
-#define PIN_SPI1_CS1  (32u)
-#define PIN_SPI1_EINT8  (31u)
-
+#define PIN_SPI1_SS   (28u)
 #define PERIPH_SPI1   sercom2
 #define PAD_SPI1_TX   SPI_PAD_0_SCK_1
 #define PAD_SPI1_RX   SERCOM_RX_PAD_3
 
+// SPI1 ADXRS290
+#define PIN_SPI1_CS0     PIN_SPI1_SS
+#define PIN_SPI1_EINT15  (30u)
+// SPI1 ADXL362
+#define PIN_SPI1_CS1  (32u)
+#define PIN_SPI1_EINT8  (31u)
 
 
+
+
+static const uint8_t SS1   = PIN_SPI1_SS;
 static const uint8_t MOSI1 = PIN_SPI1_MOSI;
 static const uint8_t MISO1 = PIN_SPI1_MISO;
 static const uint8_t SCK1  = PIN_SPI1_SCK;

@@ -17,6 +17,11 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+#include <Arduino.h>
 
-void initVariant() {       
+void initVariant() {   
+    pinMode(ADXL362_CS, OUTPUT);
+    digitalWrite(ADXL362_CS, HIGH);
+    pinMode(ADXRS290_CS, OUTPUT);
+    digitalWrite(ADXRS290_CS, HIGH);    
 }
