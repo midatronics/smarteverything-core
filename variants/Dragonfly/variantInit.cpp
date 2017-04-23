@@ -18,72 +18,63 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 #include <Arduino.h>
-#include "internalI2C.h"
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 
-static void setInitGPS(void)
-{
-    // Initialize the Serial of the GPS.
-    // This is hide to the user that could run again the begin.
-    // But it is required to send the message for the STDBY.
-    GPS.begin(9600);
-    
-    // set GPS in standby
-    gpsSleep();
-}
-
-static void configureSFXPin(void) {
-    pinMode(PIN_SIGFOX_WAKEUP, OUTPUT);
-    pinMode(PIN_SIGFOX_STDBY_STS, OUTPUT);
-    pinMode(PIN_SIGFOX_RADIO_STS, OUTPUT);
-}
 
 
-void resetBaseComponent() {
-    digitalWrite(PIN_RESET_COMPONENT, LOW);
+void resetComponent(int pin) {
+    digitalWrite(pin, LOW);
     delay(10); // wait 10 mSec.
-    digitalWrite(PIN_RESET_COMPONENT, HIGH);
+    digitalWrite(pin, HIGH);
 }
 
+void initSigfox()
+{
+    pinMode(SIGFOX_SS_PIN, OUTPUT); 
+    digitalWrite(SIGFOX_SS_PIN, HIGH);
+    
+    pinMode(SIGFOX_PWRON_PIN, OUTPUT); 
+    digitalWrite(SIGFOX_PWRON_PIN, HIGH);
 
-volatile     uint8_t actual;
+    pinMode(SIGFOX_RES_PIN, OUTPUT); 
+    digitalWrite(SIGFOX_RES_PIN, HIGH);
+  
+    pinMode(SIGFOX_EVENT_PIN, INPUT);
+    delay(10); // wait 10 mSec.
+    resetComponent(SIGFOX_RES_PIN);
+}
 
-static void ioExtenderInit(void) {
-    internalI2CInit();
+void initDust()
+{
+    pinMode(DUST_RESET_PIN, OUTPUT); 
+    digitalWrite(DUST_RESET_PIN, HIGH);
+    
+    pinMode(DUST_TIM_EN_PIN, OUTPUT); 
+    digitalWrite(DUST_TIM_EN_PIN, HIGH);
+    delay(10); // wait 10 mSec.
+    resetComponent(DUST_RESET_PIN);
+}
 
-    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_ID_REG);
-    if ((actual & FXL6408_ID_VALUE) != FXL6408_ID_VALUE) {
-        smeInitError |= IOEXT_ERR;
-    }
+void initWiFi()
+{
+    pinMode(WIFI_RES_PIN, OUTPUT); 
+    digitalWrite(WIFI_RES_PIN, HIGH);
     
-    writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_CONF_PORT_REG, CONF_PORT);
-    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_CONF_PORT_REG);
-    if ((actual & CONF_PORT) != CONF_PORT) {
-        smeInitError |= IOEXT_CONF_ERR;
-    }
+    pinMode(WIFI_SS_PIN, OUTPUT); 
+    digitalWrite(WIFI_SS_PIN, HIGH);
+
+    pinMode(WIFI_IRQN_PIN, INPUT);
     
-    writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG, FXL6408_NORMAL_RUN_VALUE);
-    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG);
-    if ((actual & FXL6408_NORMAL_RUN_VALUE) != FXL6408_NORMAL_RUN_VALUE) {
-        smeInitError |= IOEXT_CONF_ERR;
-    }
+    pinMode(WIFI_WAKE_PIN, OUTPUT); 
+    digitalWrite(WIFI_WAKE_PIN, HIGH);
+
+        
+    pinMode(WIFI_CHIP_EN_PIN, OUTPUT); 
+    digitalWrite(WIFI_CHIP_EN_PIN, HIGH);
     
-    // wait a while and reset the chip
-    delay(10);
-    writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG, FXL6408_INITIAL_RESET_VALUE);
-    actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG);
-    if ((actual & FXL6408_INITIAL_RESET_VALUE) != FXL6408_INITIAL_RESET_VALUE) {
-        smeInitError |= IOEXT_CONF_ERR;
-    }
-    
-    // wait a while and exit from Reset
-    delay(20);
-        writeRegister(FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG, FXL6408_NORMAL_RUN_VALUE);
-        actual = readRegister( FXL6408_ADDRESS, FXL6408_DEVICE_OUT_STATE_PORT_REG);
-        if ((actual & FXL6408_NORMAL_RUN_VALUE) != FXL6408_NORMAL_RUN_VALUE) {
-            smeInitError |= IOEXT_CONF_ERR;
-        }
+    delay(10); // wait 10 mSec.
+    resetComponent(WIFI_RES_PIN);
 }
 
 
@@ -92,12 +83,18 @@ void initVariant() {
     // initialization the two Yellow Led
     LED_YELLOW_ONE_INIT;
     LED_YELLOW_TWO_INIT;
-    
-    // Configure specific Fox2 Pin
+
+    // Light Led OFF
+    ledYellowOneLight(LOW);
+    ledYellowTwoLight(LOW);
+
+    initSigfox();
+    initDust();
+    initWiFi();
     
     // initialize The EXT_PWR Pin as input
     // it will be HIGH when the battery is not connected
-    pinMode(PIN_EXT_PWR, INPUT_PULLDOWN); 
+    pinMode(PIN_EXT_PWR, INPUT_PULLUP); 
     
     // initialize the battery monitor
     pinMode(PIN_BATT_MON, INPUT);
@@ -109,7 +106,6 @@ void initVariant() {
     pinMode(PIN_RESET_COMPONENT, OUTPUT);
     digitalWrite(PIN_RESET_COMPONENT, HIGH);
     
-    configureSFXPin();
     
     // reset the base component
     resetBaseComponent();
