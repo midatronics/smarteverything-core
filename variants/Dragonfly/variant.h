@@ -127,7 +127,9 @@ static const uint8_t ATN = PIN_ATN;
 #define DUST_RESET_PIN        (33ul)
 #define DUST_TIM_EN_PIN       (34ul)
 
-
+// SEVE
+#define PIN_DUST_CTS          (PIN_A2)  // FAKE PIN!!!!!
+#define USER_BUTTON           (PIN_A3)  // FAKE PIN
 
 /*
  * SPI Interfaces
@@ -158,6 +160,7 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PAD_SPI1_RX   SERCOM_RX_PAD_0
 
 // SigFox
+#define SIGFOX_SPI           SPI1
 #define SIGFOX_RES_PIN       (39ul)
 #define SIGFOX_PWRON_PIN     (40ul)
 #define SIGFOX_EVENT_PIN     (41ul)
@@ -171,6 +174,13 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define WIFI_CHIP_EN_PIN   (46ul) // PB0
 #define WIFI_RES_PIN       (47ul) // PB1
 
+// Needed for WINC1501B (WiFi101) library
+// --------------------------------------
+#define WINC1501_RESET_PIN     WIFI_RES_PIN
+#define WINC1501_CHIP_EN_PIN   WIFI_CHIP_EN_PIN
+#define WINC1501_INTN_PIN      WIFI_IRQN_PIN
+#define WINC1501_SPI           SPI1
+#define WINC1501_SPI_CS_PIN    WIFI_SS_PIN
 
 /*
  * Wire Interfaces
@@ -212,7 +222,7 @@ void ledYellowTwoLight(uint32_t value);
  *      DUST
  *      WiFi
  * The reset is executed by a LOW signal.
- * The function move LOW the signal for a while and than move up again.
+ * The function move LOW the sighttps://support.microsoft.com/en-us/help/2978092nal for a while and than move up again.
  */
 void resetBaseComponent(void);
 
@@ -240,7 +250,8 @@ extern SERCOM sercom4;
 extern SERCOM sercom5;
 
 extern Uart Serial1;
-extern Uart DUST;
+extern Uart SerialDust;
+#define SIGFOX_SPI SPI1;
 
 #endif
 

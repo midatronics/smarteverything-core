@@ -31,7 +31,7 @@ void resetComponent(int pin) {
 
 void initSigfox()
 {
-    pinMode(SIGFOX_SS_PIN, OUTPUT); 
+  /*  pinMode(SIGFOX_SS_PIN, OUTPUT); 
     digitalWrite(SIGFOX_SS_PIN, HIGH);
     
     pinMode(SIGFOX_PWRON_PIN, OUTPUT); 
@@ -43,6 +43,9 @@ void initSigfox()
     pinMode(SIGFOX_EVENT_PIN, INPUT);
     delay(10); // wait 10 mSec.
     resetComponent(SIGFOX_RES_PIN);
+*/
+    pinMode(SIGFOX_RFPWR_PIN, OUTPUT); 
+    digitalWrite(SIGFOX_RFPWR_PIN, LOW);
 }
 
 void initDust()
@@ -91,7 +94,7 @@ void initVariant() {
     initSigfox();
     initDust();
     initWiFi();
-    
+    /*
     // initialize The EXT_PWR Pin as input
     // it will be HIGH when the battery is not connected
     pinMode(PIN_EXT_PWR, INPUT_PULLUP); 
@@ -113,5 +116,5 @@ void initVariant() {
     // put GPS in stdby to save power
     setInitGPS();
 
-    ioExtenderInit();
+    ioExtenderInit(); */
 }

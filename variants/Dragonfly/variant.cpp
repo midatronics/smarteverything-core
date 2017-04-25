@@ -16,9 +16,7 @@
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
 #include <Arduino.h>
-#include "WireIoExt.h"
 
 uint8_t smeInitError;
 
@@ -232,8 +230,8 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB, 6, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_6 }, 
-  { PORTA, 3, PIO_ANALOG,  PIN_ATTR_ANALOG,  No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // DAC/VREFP
-
+  { PORTA, 3, PIO_ANALOG,  PIN_ATTR_ANALOG,  No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE } // DAC/VREFP
+};
   
 const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM]={ TCC0, TCC1, TCC2, TC3, TC4, TC5, TC6, TC7 } ;
 
@@ -247,9 +245,7 @@ SERCOM sercom5( SERCOM5 ) ;
 
 Uart Serial1( &sercom0, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX ) ;
 
-Uart DUST( &sercom5, PIN_BLE_RX, PIN_BLE_TX, PAD_BLE_RX, PAD_BLE_TX ) ;
-
-SPICLass& SIGFOX_SPI = SPI1 ;
+Uart SerialDust( &sercom5, PIN_DUST_RX, PIN_DUST_TX, PAD_DUST_RX, PAD_DUST_TX ) ;
 
 void SERCOM0_Handler()
 {
@@ -258,7 +254,7 @@ void SERCOM0_Handler()
 
 void SERCOM5_Handler()
 {
-  DUST.IrqHandler();
+  SerialDust.IrqHandler();
 }
 
 void ledYellowTwoLight(uint32_t value) {
