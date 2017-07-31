@@ -160,7 +160,6 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PAD_SPI1_RX   SERCOM_RX_PAD_0
 
 // SigFox
-#define SIGFOX_SPI           SPI1
 #define SIGFOX_RES_PIN       (39ul)
 #define SIGFOX_PWRON_PIN     (40ul)
 #define SIGFOX_EVENT_PIN     (41ul)
