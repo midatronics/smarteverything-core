@@ -130,8 +130,8 @@ const PinDescription g_APinDescription[] = {
  |            |                  |        |                 |(EXTINT)|(AIN)|(AIN)|     |     | (x/PAD) | (x/PAD) | (x/WO) | (x/WO) |          |          |
  +------------+------------------+--------+-----------------+--------+-----+-----+-----+-----+---------+---------+--------+--------+----------+----------+
  |            | ADX SPI1 		 |        |                 |        |     |     |     |     |         |         |        |        |          |          |
- | 26         |                  |  PA12  | ADX_SPI1 SCK    |   12   |     |     |     |     |  *2/00  |   4/00  | TCC2/0 | TCC0/6 |          | AC/CMP0  |
- | 27         |                  |  PA13  | ADX_SPI1 MOSI   |   13   |     |     |     |     |  *2/01  |   4/01  | TCC2/1 | TCC0/7 |          | AC/CMP1  |
+ | 26         |                  |  PA12  | ADX_SPI1 MOSI   |   12   |     |     |     |     |  *2/00  |   4/00  | TCC2/0 | TCC0/6 |          | AC/CMP0  |
+ | 27         |                  |  PA13  | ADX_SPI1 CLK    |   13   |     |     |     |     |  *2/01  |   4/01  | TCC2/1 | TCC0/7 |          | AC/CMP1  |
  | 28         |  ADXRS290 CS     |  PA14  | ADX_SPI1 CS0    |   14   |     |     |     |     |   2/02  |   4/02  |  TC3/0 | TCC0/4 |          | GCLK_IO0 |
  | 29         |                  |  PA15  | ADX_SPI1 MISO   |   15   |     |     |     |     |  *2/03  |   4/03  |  TC3/1 | TCC0/5 |          | GCLK_IO1 |
  | 30         |  ADXRS290 EINT   |  PA27  | EINT15	 		|   15   |     |     |     |     |         |         |        |        |          | GCLK_IO0 |

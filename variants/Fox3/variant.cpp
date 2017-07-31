@@ -114,13 +114,11 @@ const PinDescription g_APinDescription[]=
  * | 22         | MISO             |  PA19  |                 | SERCOM1/PAD[3]
  * | 23         | MOSI             |  PA16  |                 | SERCOM1/PAD[0]
  * | 24         | SCK              |  PA17  |                 | SERCOM1/PAD[1]
- * | 25         | SS               |  PA18  |                 | SERCOM1/PAD[2]
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTA, 19, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // MISO: SERCOM1/PAD[3]
   { PORTA, 16, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // MOSI: SERCOM1/PAD[0]
   { PORTA, 17, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCK: SERCOM1/PAD[1]  
- // { PORTA, 18, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SS: SERCOM1/PAD[2]
 
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
@@ -229,12 +227,12 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | Analog Connector |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 50         | A0/DAC           |  PA02  |                 | DAC/VOUT
+ * | 50         | ATN              |  PB06  |                 | EIC/EXTINT[6]  ADC/AIN[14] PTC/Y[12]
+ * | 51         | SPI-SS           |  PA18  |                 | SERCOM1/PAD[2]
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  { PORTA,  2, PIO_ANALOG, PIN_ATTR_ANALOG, DAC_Channel0, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_2 }, // DAC/VOUT
-    
-  { PORTB,  3, PIO_OUTPUT, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // used as output only
+  { PORTB, 6, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_6 },        
+  { PORTA, 18, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SS: SERCOM1/PAD[2]
 } ;
 
 

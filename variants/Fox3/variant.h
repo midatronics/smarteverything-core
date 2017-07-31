@@ -106,6 +106,10 @@ static const uint8_t A4  = PIN_A4 ;
 static const uint8_t A5  = PIN_A5 ;
 #define ADC_RESOLUTION		12
 
+// Other pins
+#define PIN_ATN              (50ul)
+static const uint8_t ATN = PIN_ATN;
+
 /*
  * Serial interfaces
  */
@@ -152,7 +156,7 @@ static const uint8_t A5  = PIN_A5 ;
 #define PAD_SPI_TX           SPI_PAD_0_SCK_1
 #define PAD_SPI_RX           SERCOM_RX_PAD_3
 
-#define PIN_SPI_SS           (25u)
+#define PIN_SPI_SS           (51u)
 
 static const uint8_t SS	  = PIN_SPI_SS ;
 static const uint8_t MOSI = PIN_SPI_MOSI ;

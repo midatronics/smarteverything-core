@@ -33,12 +33,6 @@ static void setInitGPS(void)
     gpsSleep();
 }
 
-static void configureSFXPin(void) {
-    pinMode(PIN_SIGFOX_WAKEUP, OUTPUT);
-    pinMode(PIN_SIGFOX_STDBY_STS, OUTPUT);
-    pinMode(PIN_SIGFOX_RADIO_STS, OUTPUT);
-}
-
 
 void resetBaseComponent() {
     digitalWrite(PIN_RESET_COMPONENT, LOW);
@@ -92,12 +86,15 @@ void initVariant() {
     // initialization the two Yellow Led
     LED_YELLOW_ONE_INIT;
     LED_YELLOW_TWO_INIT;
-    
-    // Configure specific Fox2 Pin
+
+    // Light Led OFF
+    ledYellowOneLight(LOW);
+    ledYellowTwoLight(LOW);
+
     
     // initialize The EXT_PWR Pin as input
     // it will be HIGH when the battery is not connected
-    pinMode(PIN_EXT_PWR, INPUT_PULLDOWN); 
+    pinMode(PIN_EXT_PWR, INPUT_PULLUP); 
     
     // initialize the battery monitor
     pinMode(PIN_BATT_MON, INPUT);
@@ -109,7 +106,6 @@ void initVariant() {
     pinMode(PIN_RESET_COMPONENT, OUTPUT);
     digitalWrite(PIN_RESET_COMPONENT, HIGH);
     
-    configureSFXPin();
     
     // reset the base component
     resetBaseComponent();

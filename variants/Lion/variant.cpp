@@ -114,13 +114,11 @@ const PinDescription g_APinDescription[]=
  * | 22         | MISO             |  PA19  |                 | SERCOM1/PAD[3]
  * | 23         | MOSI             |  PA16  |                 | SERCOM1/PAD[0]
  * | 24         | SCK              |  PA17  |                 | SERCOM1/PAD[1]
- * | 25         | SS               |  PA18  |                 | SERCOM1/PAD[2]
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTA, 19, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // MISO: SERCOM1/PAD[3]
   { PORTA, 16, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // MOSI: SERCOM1/PAD[0]
   { PORTA, 17, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCK: SERCOM1/PAD[1]  
- // { PORTA, 18, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SS: SERCOM1/PAD[2]
 
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
@@ -175,22 +173,22 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | SigFox           |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 34         |                  |  PB12  | SFX_TXD         | *SERCOM4/PAD[0]
- * | 35         |                  |  PB13  | SFX_RXD         | *SERCOM4/PAD[1]
- * | 36         |                  |  PB14  | SFX_RTS         | *SERCOM4/PAD[2]
- * | 37         |                  |  PB15  | SFX_CTS         | *SERCOM4/PAD[3]
- * | 38         |                  |  PB07  | RADIO_STS       | 
- * | 39         |                  |  PB10  | STDBY_STS       | 
- * | 40         |                  |  PB11  | WAKEUP         | 
+ * | 34         |                  |  PB12  | LORA_TXD        | *SERCOM4/PAD[0]
+ * | 35         |                  |  PB13  | LORA_RXD        | *SERCOM4/PAD[1]
+ * | 36         |                  |  PB14  | LORA_RTS        | *SERCOM4/PAD[2]
+ * | 37         |                  |  PB15  | LORA_CTS        | *SERCOM4/PAD[3]
+ * | 38         |                  |  PB07  | LORA_GPIO0      | 
+ * | 39         |                  |  PB10  | LORA_GPIO1      | 
+ * | 40         |                  |  PB11  | LORA_GPIO2      | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB, 12, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // TX: SERCOM4/PAD[0]
   { PORTB, 13, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RX: SERCOM4/PAD[1]
   { PORTB, 14, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RTS: SERCOM4/PAD[2]
   { PORTB, 15, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // CTS: SERCOM4/PAD[3]
-  { PORTB, 07, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // RADIO_STS
-  { PORTB, 10, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // STDBY_STS
-  { PORTB, 11, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // WAKEUP
+  { PORTB, 07, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // GPIO0
+  { PORTB, 10, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // GPIO1
+  { PORTB, 11, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // GPIO2
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | BLE              |        |                 |
@@ -229,12 +227,12 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | Analog Connector |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
- * | 50         | A0/DAC           |  PA02  |                 | DAC/VOUT
+ * | 50         | ATN              |  PB06  |                 | EIC/EXTINT[6]  ADC/AIN[14] PTC/Y[12]
+ * | 51         | SPI-SS           |  PA18  |                 | SERCOM1/PAD[2] 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  { PORTA,  2, PIO_ANALOG, PIN_ATTR_ANALOG, DAC_Channel0, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_2 }, // DAC/VOUT
-    
-  { PORTB,  3, PIO_OUTPUT, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // used as output only
+  { PORTB, 6, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_6 }, 
+  { PORTA, 18, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SS: SERCOM1/PAD[2]
 } ;
 
 
@@ -252,7 +250,7 @@ Uart Serial1( &sercom0, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERI
 
 Uart GPS( &sercom2, PIN_GPS_RX, PIN_GPS_TX, PAD_GPS_RX, PAD_GPS_TX ) ;
 Uart BLE( &sercom5, PIN_BLE_RX, PIN_BLE_TX, PAD_BLE_RX, PAD_BLE_TX ) ;
-Uart iotAntenna( &sercom4, PIN_SIGFOX_RX, PIN_SIGFOX_TX, PAD_SIGFOX_RX, PAD_SIGFOX_TX ) ;
+Uart iotAntenna( &sercom4, PIN_LORA_RX, PIN_LORA_TX, PAD_LORA_RX, PAD_LORA_TX ) ;
 
 void SERCOM0_Handler()
 {
@@ -277,9 +275,9 @@ void SERCOM5_Handler()
 void ledYellowTwoLight(uint32_t value) {
     if (value == HIGH) {
         digitalWrite(PIN_LED_RXL, LOW);
-        } else if (value == LOW) {
+    } else if (value == LOW) {
         digitalWrite(PIN_LED_RXL, HIGH);
-        } else {
+    } else {
         analogWrite(PIN_LED_RXL, 255-value);   // in case of PWM
     }
 }
@@ -287,15 +285,15 @@ void ledYellowTwoLight(uint32_t value) {
 void ledYellowOneLight(uint32_t value)   {
     if (value == HIGH) {
         digitalWrite(PIN_LED_TXL, LOW);
-        } else if (value == LOW) {
+    } else if (value == LOW) {
         digitalWrite(PIN_LED_TXL, HIGH);
-        } else {
+    } else {
         analogWrite(PIN_LED_TXL, 255-value);   // in case of PWM
     }
 }
 
 bool isOnBattery(void) {   
-    return !digitalRead(PIN_EXT_PWR);
+    return digitalRead(PIN_EXT_PWR);
 }
 
 
@@ -309,23 +307,14 @@ void gpsSleep(void) {
 }
 
 
-/*
-Output signal which indicates the status of the radio. 
-Set to VCC during radio transmission or as soon as a radio frame is detected with correct synchronization word. 
-The signals returns to GND at the end of transmission or as soon as the frame reception is finished.
-*/
-bool isSFXMsgOnAir(void) {
-    return digitalRead(PIN_SIGFOX_RADIO_STS);
+#define  RN2483_SET_SLEEP_CMD    "sys sleep 4294967296\r\n"    // Sleep
+void loraSleep(void)
+{
+     // TBD Put loRA in Sleep
+     iotAntenna.print(RN2483_SET_SLEEP_CMD);   
 }
 
-void sfxSleep(void){
-
-    digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
-    
-}
-
-void sfxWakeup(void){
-
-     digitalWrite(PIN_SIGFOX_WAKEUP, LOW);   // Wakeup SFX
-     
+void loraWakeup(void)
+{
+    // TBD  break condition + 0x55
 }

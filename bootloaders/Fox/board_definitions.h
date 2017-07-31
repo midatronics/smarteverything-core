@@ -21,6 +21,8 @@
   #include "board_definitions_asme_fox.h"
 #elif defined(BOARD_ID_asme_lion)
   #include "board_definitions_asme_lion.h"
+#elif defined(BOARD_ID_asme_dragonfly)
+  #include "board_definitions_asme_dragonfly.h"
 #elif defined(BOARD_ID_adi)
   #include "board_definitions_adi.h"
 #else

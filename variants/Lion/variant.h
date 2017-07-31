@@ -81,9 +81,9 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_13           (26u)
+#define PIN_LED_13           (13u)
 #define PIN_LED_RXL          (26u)
-#define PIN_LED_TXL          (27u)
+#define PIN_LED_TXL          (25u)
 #define PIN_LED              PIN_LED_13
 #define PIN_LED2             PIN_LED_RXL
 #define PIN_LED3             PIN_LED_TXL
@@ -107,6 +107,10 @@ static const uint8_t A4  = PIN_A4 ;
 static const uint8_t A5  = PIN_A5 ;
 #define ADC_RESOLUTION		12
 
+// Other pins
+#define PIN_ATN              (50ul)
+static const uint8_t ATN = PIN_ATN;
+
 /*
  * Serial interfaces
  */
@@ -116,16 +120,16 @@ static const uint8_t A5  = PIN_A5 ;
 #define PAD_GPS_TX           (UART_TX_PAD_0)
 #define PAD_GPS_RX           (SERCOM_RX_PAD_1)
 
-// SigFox
-#define PIN_SIGFOX_RX        (34ul)
-#define PIN_SIGFOX_TX        (35ul)
-#define PIN_SIGFOX_RTS       (36ul)
-#define PIN_SIGFOX_CTS       (37ul)
-#define PIN_SIGFOX_RADIO_STS (38ul)
-#define PIN_SIGFOX_STDBY_STS (39ul)
-#define PIN_SIGFOX_WAKEUP    (40ul)
-#define PAD_SIGFOX_TX        (UART_TX_RTS_CTS_PAD_0_2_3)
-#define PAD_SIGFOX_RX        (SERCOM_RX_PAD_1)
+// Lora
+#define PIN_LORA_RX          (34ul)
+#define PIN_LORA_TX          (35ul)
+#define PIN_LORA_RTS         (36ul)
+#define PIN_LORA_CTS         (37ul)
+#define PIN_LORA_GPIO0       (38ul)
+#define PIN_LORA_GPIO1       (39ul)
+#define PIN_LORA_GPIO2       (40ul)
+#define PAD_LORA_TX          (UART_TX_RTS_CTS_PAD_0_2_3)
+#define PAD_LORA_RX          (SERCOM_RX_PAD_1)
 
 // BLE
 #define PIN_BLE_TX           (41ul)
@@ -149,11 +153,11 @@ static const uint8_t A5  = PIN_A5 ;
 #define PIN_SPI_MISO         (22u)
 #define PIN_SPI_MOSI         (23u)
 #define PIN_SPI_SCK          (24u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_2_SCK_3
-#define PAD_SPI_RX           SERCOM_RX_PAD_0
+#define PERIPH_SPI           sercom1
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI_RX           SERCOM_RX_PAD_3
 
-#define PIN_SPI_SS           (25u)
+#define PIN_SPI_SS           (51u)
 
 static const uint8_t SS	  = PIN_SPI_SS ;
 static const uint8_t MOSI = PIN_SPI_MOSI ;
@@ -235,8 +239,8 @@ void gpsSleep(void);
  */
 void resetBaseComponent(void);
 
-void sfxSleep(void);
-void sfxWakeup(void);
+void loraSleep(void);
+void loraWakeup(void);
 
 #ifdef __cplusplus
 }
@@ -300,6 +304,8 @@ extern uint8_t smeInitError;
 #define IOEXT_CONF_ERR  0b01000000
 #define IOEXT_INIT_ERR  0b00100000
 
+// Alias Serial to SerialUSB
+#define Serial                      SerialUSB
 
 #endif /* _VARIANT_AMEL_SMARTEVERYTHING_ */
 
