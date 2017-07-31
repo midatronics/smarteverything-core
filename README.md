@@ -2,7 +2,6 @@
 
 Arduino core for Smart Everything board
 
----
 ## v2.2.0 23-Apr-2017 Release
 - Added SmartEverything Dragonfly board
 
@@ -12,15 +11,22 @@ Error Fixed on this release:
 - Spi inizializaton error fixed in Lion
 - ATN Pin definition added for Lion & Fox3
 
-## v2.0.0 Fourth Release 26-Oct-2016
+## v2.0.0 Third Release 26-Oct-2016
 End of Support for SmartEverything Fox
 
-- first release for  SmartEverything:
-	    Lion
-		Fox3
-		Base core for the SmartEverything NXP-ST Shield
-			[https://github.com/axelelettronica/sme-nxp-st-library](https://github.com/axelelettronica/sme-nxp-st-library)
+- Fixed SPI error on Fox family
+- End support for FOX unit
+- Added new Fox3 Unit
+- Added new Lion Unit
 
+	Base core for the SmartEverything NXP-ST Shield
+		[https://github.com/axelelettronica/sme-nxp-st-library](https://github.com/axelelettronica/sme-nxp-st-library
+
+v1.2.0 Second Release 09-May-2016
+---------------------------------
+* Added SmartTutto unit .
+* Internal change to move the board from AMEL-Tech to Arrow in the BoardManager.
+* minor change in variantInit to make the 2 unit compatible.
 
 ##v1.2.0. Third Release 11-May-2015
 - Added SmartTutto unit .
@@ -35,7 +41,6 @@ End of Support for SmartEverything Fox
     `gpsForceOn() = send an HW wakeup to GPS`<br>
     `sfxSleep()   = put SFX in sleep`<br>
     `sfxWakeup()  = send an HW wakeup to SFX`<br>
-
 
 
 ## v1.0.0 First Release
