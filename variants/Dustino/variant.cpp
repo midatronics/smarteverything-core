@@ -26,8 +26,7 @@ uint8_t smeInitError;
  */
 const PinDescription g_APinDescription[]=
 {
-    /* START HEADER  */ 
-
+/* START HEADER  */ 
 /*
  +------------+------------------+--------+-----------------+--------+-----------------------+---------+---------+--------+--------+----------+----------+
  | Pin number |  MKR  Board pin  |  PIN   | Notes           | Peri.A |     Peripheral B      | Perip.C | Perip.D | Peri.E | Peri.F | Periph.G | Periph.H |
@@ -127,8 +126,9 @@ const PinDescription g_APinDescription[]=
   { PORTA, 25, PIO_COM,     (PIN_ATTR_NONE                                   ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // USB/DP
   { PORTA,  3, PIO_DIGITAL, (PIN_ATTR_DIGITAL                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // DAC/VREFP
 
-/* START DUST SPECIFIC  */  
+/* END HEADER  */
 
+/* START DUSTINO SPECIFIC  */  
 /*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | DUST             |        |                 |
@@ -138,7 +138,7 @@ const PinDescription g_APinDescription[]=
  * | 27         |                  |  PA18  | RSTN            | 
  * | 28         |                  |  PA27  | TIMEN           | 
  * | 29         |                  |  PA14  | RTS             | 
- * | 30         |                  |  PA15  | CTS           | 
+ * | 30         |                  |  PA15  | CTS             | 
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTA,  12, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // 
@@ -147,6 +147,16 @@ const PinDescription g_APinDescription[]=
   { PORTA,  27, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, //   
   { PORTA,  14, PIO_DIGITAL, (PIN_ATTR_DIGITAL                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE },
   { PORTA,  15, PIO_DIGITAL, (PIN_ATTR_DIGITAL                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE },  
+/*
+ * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
+ * |            | USER LED         |        |                 |
+ * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
+ * | 31         |                  |  PB09  | TXD             | 	  
+ * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
+ */
+  { PORTB,  9, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER,      EXTERNAL_INT_NONE    },
+/* END DUSTINO SPECIFIC  */
+
 };
   
 const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM]={ TCC0, TCC1, TCC2, TC3, TC4, TC5, TC6, TC7 } ;
@@ -161,17 +171,18 @@ SERCOM sercom5( SERCOM5 ) ;
 
 Uart Serial1(&sercom5, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX);
 
+void SERCOM5_Handler()
+{
+	Serial1.IrqHandler();
+	
+}
+
+
 Uart SerialDust(&sercom2, PIN_DUST_RX, PIN_DUST_TX, PAD_DUST_RX, PAD_DUST_TX ) ;
 
 void SERCOM2_Handler()
 {
 	SerialDust.IrqHandler();
-}
-
-void SERCOM5_Handler()
-{
-	  Serial1.IrqHandler();
-  
 }
 
 

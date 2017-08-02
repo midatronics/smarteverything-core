@@ -23,8 +23,10 @@
 /*----------------------------------------------------------------------------
  *        Definitions
  *----------------------------------------------------------------------------*/
-#define ASME3_REVISION
+#pragma once
 
+// The definitions here needs a SAMD core >=1.6.10
+#define ARDUINO_SAMD_VARIANT_COMPLIANCE 10610
 
 /** Frequency of the board main oscillator */
 #define VARIANT_MAINOSC		(32768ul)
@@ -58,14 +60,17 @@ extern "C"
 #define NUM_DIGITAL_PINS     (14u)
 #define NUM_ANALOG_INPUTS    (6u)
 #define NUM_ANALOG_OUTPUTS   (1u)
+#define analogInputToDigitalPin(p)  ((p < 7u) ? (p) + 15u : -1)
 
-#define digitalPinToPort(P)        ( &(PORT->Group[g_APinDescription[P].ulPort]) )
-#define digitalPinToBitMask(P)     ( 1 << g_APinDescription[P].ulPin )
-//#define analogInPinToBit(P)        ( )
-#define portOutputRegister(port)   ( &(port->OUT.reg) )
-#define portInputRegister(port)    ( &(port->IN.reg) )
-#define portModeRegister(port)     ( &(port->DIR.reg) )
-#define digitalPinHasPWM(P)        ( g_APinDescription[P].ulPWMChannel != NOT_ON_PWM || g_APinDescription[P].ulTCChannel != NOT_ON_TIMER )
+// Low-level pin register query macros
+// -----------------------------------
+#define digitalPinToPort(P)      (&(PORT->Group[g_APinDescription[P].ulPort]))
+#define digitalPinToBitMask(P)   (1 << g_APinDescription[P].ulPin)
+//#define analogInPinToBit(P)    ()
+#define portOutputRegister(port) (&(port->OUT.reg))
+#define portInputRegister(port)  (&(port->IN.reg))
+#define portModeRegister(port)   (&(port->DIR.reg))
+#define digitalPinHasPWM(P)      (g_APinDescription[P].ulPWMChannel != NOT_ON_PWM || g_APinDescription[P].ulTCChannel != NOT_ON_TIMER)
 
 /*
  * digitalPinToTimer(..) is AVR-specific and is not defined for SAMD
@@ -80,23 +85,19 @@ extern "C"
 #define digitalPinToInterrupt(P)   ( g_APinDescription[P].ulExtInt )
 
 // LEDs
-#define PIN_LED_13           (13u)
-#define PIN_LED_RXL          (26u)
-#define PIN_LED_TXL          (27u)
-#define PIN_LED              PIN_LED_13
-#define PIN_LED2             PIN_LED_RXL
-#define PIN_LED3             PIN_LED_TXL
+#define PIN_LED              (31u)
 #define LED_BUILTIN          PIN_LED_13
 
 /*
  * Analog pins
  */
-#define PIN_A0               (14ul)
-#define PIN_A1               (15ul)
-#define PIN_A2               (16ul)
-#define PIN_A3               (17ul)
-#define PIN_A4               (18ul)
-#define PIN_A5               (19ul)
+#define PIN_A0              (15u)
+#define PIN_A1              (16u)
+#define PIN_A2              (17u)
+#define PIN_A3              (18u)
+#define PIN_A4              (19u)
+#define PIN_A5              (20u)
+#define PIN_DAC0			(15u)
 
 static const uint8_t A0  = PIN_A0 ;
 static const uint8_t A1  = PIN_A1 ;
@@ -104,11 +105,9 @@ static const uint8_t A2  = PIN_A2 ;
 static const uint8_t A3  = PIN_A3 ;
 static const uint8_t A4  = PIN_A4 ;
 static const uint8_t A5  = PIN_A5 ;
+static const uint8_t DAC0 = PIN_DAC0;
 #define ADC_RESOLUTION		12
 
-// Other pins
-#define PIN_ATN              (50ul)
-static const uint8_t ATN = PIN_ATN;
 
 /*
  * Serial interfaces
@@ -120,110 +119,53 @@ static const uint8_t ATN = PIN_ATN;
 #define PAD_SERIAL1_RX (SERCOM_RX_PAD_3)
 
 // DUST
-#define PIN_DUST_TX           (31ul)
-#define PIN_DUST_RX           (32ul)
+#define PIN_DUST_TX           (25u)
+#define PIN_DUST_RX           (26u)
 #define PAD_DUST_TX           (UART_TX_PAD_0)
 #define PAD_DUST_RX           (SERCOM_RX_PAD_1)
-#define DUST_RESET_PIN        (33ul)
-#define DUST_TIM_EN_PIN       (34ul)
-
-// SEVE
-#define PIN_DUST_CTS          (PIN_A2)  // FAKE PIN!!!!!
-#define USER_BUTTON           (PIN_A3)  // FAKE PIN
+#define DUST_RESET_PIN        (27u)
+#define DUST_TIM_EN_PIN       (28)
+#define PIN_DUST_CTS          (30u)  
+#define PIN_DUST_RTS          (29u) 
 
 /*
  * SPI Interfaces
  */
-#define SPI_INTERFACES_COUNT 2
+#define SPI_INTERFACES_COUNT 1
 
-#define PIN_SPI_MISO         (22u)
-#define PIN_SPI_MOSI         (23u)
-#define PIN_SPI_SCK          (24u)
-#define PERIPH_SPI           sercom1
-#define PAD_SPI_TX           SPI_PAD_0_SCK_1
-#define PAD_SPI_RX           SERCOM_RX_PAD_3
+// SPI
+#define PIN_SPI_MISO  (10u)
+#define PIN_SPI_MOSI  (8u)
+#define PIN_SPI_SCK   (9u)
+#define PIN_SPI_SS    (24u)
+#define PERIPH_SPI    sercom1
+#define PAD_SPI_TX    SPI_PAD_0_SCK_1
+#define PAD_SPI_RX    SERCOM_RX_PAD_3
+static const uint8_t SS   = PIN_SPI_SS;   // SPI Slave SS not used. Set here only for reference.
+static const uint8_t MOSI = PIN_SPI_MOSI;
+static const uint8_t MISO = PIN_SPI_MISO;
+static const uint8_t SCK  = PIN_SPI_SCK;
 
-#define PIN_SPI_SS           (25u)
 
-static const uint8_t SS	  = PIN_SPI_SS ;
-static const uint8_t MOSI = PIN_SPI_MOSI ;
-static const uint8_t MISO = PIN_SPI_MISO ;
-static const uint8_t SCK  = PIN_SPI_SCK ;
-
-// SPI1: Connected to Sigfox and WiFi
-#define USE_SPI1
-#define PIN_SPI1_MISO (35u)
-#define PIN_SPI1_MOSI (36u)
-#define PIN_SPI1_SCK  (37u)
-#define PERIPH_SPI1   sercom4
-#define PAD_SPI1_TX   SPI_PAD_2_SCK_3
-#define PAD_SPI1_RX   SERCOM_RX_PAD_0
-
-// SigFox
-#define SIGFOX_RES_PIN       (39ul)
-#define SIGFOX_PWRON_PIN     (40ul)
-#define SIGFOX_EVENT_PIN     (41ul)
-#define SIGFOX_SS_PIN        (38ul)
-#define SIGFOX_RFPWR_PIN     (42ul)
-
-// WiFi Module
-#define WIFI_SS_PIN        (43ul) // PB11
-#define WIFI_IRQN_PIN      (44ul) // PB30
-#define WIFI_WAKE_PIN      (45ul) // PB31
-#define WIFI_CHIP_EN_PIN   (46ul) // PB0
-#define WIFI_RES_PIN       (47ul) // PB1
-
-// Needed for WINC1501B (WiFi101) library
-// --------------------------------------
-#define WINC1501_RESET_PIN     WIFI_RES_PIN
-#define WINC1501_CHIP_EN_PIN   WIFI_CHIP_EN_PIN
-#define WINC1501_INTN_PIN      WIFI_IRQN_PIN
-#define WINC1501_SPI           SPI1
-#define WINC1501_SPI_CS_PIN    WIFI_SS_PIN
-
-/*
- * Wire Interfaces
- */
+// Wire Interfaces
+// ---------------
 #define WIRE_INTERFACES_COUNT 1
 
-#define PIN_WIRE_SDA         (20u)
-#define PIN_WIRE_SCL         (21u)
-#define PERIPH_WIRE          sercom3
-#define WIRE_IT_HANDLER      SERCOM3_Handler
+// Wire
+#define PIN_WIRE_SDA        (11u)
+#define PIN_WIRE_SCL        (12u)
+#define PERIPH_WIRE         sercom0
+#define WIRE_IT_HANDLER     SERCOM0_Handler
+static const uint8_t SDA = PIN_WIRE_SDA;
+static const uint8_t SCL = PIN_WIRE_SCL;
 
-/*
- * USB
- */
-#define PIN_USB_HOST_ENABLE  (28ul)
-#define PIN_USB_DM           (29ul)
-#define PIN_USB_DP           (30ul)
-
-
-
-/*
-    Yellow Led wrapper function
-    These functions has been created for a more comfortable use 
-      because internally wrap the inversion of the HIGH, LOW meaning
-
-    Using these function it remain the same Arduino User Experience to light a led
-    HIGH = Light ON
-    LOW  = Light OFF
-
- */
-void ledYellowOneLight(uint32_t value);
-void ledYellowTwoLight(uint32_t value);
+// USB
+// ---
+#define PIN_USB_DM          (22ul)
+#define PIN_USB_DP          (23ul)
+#define PIN_USB_HOST_ENABLE (24ul)
 
 
-
-/*
- * The function resets all the component mounted on the base 
- *      SigFox
- *      DUST
- *      WiFi
- * The reset is executed by a LOW signal.
- * The function move LOW the sighttps://support.microsoft.com/en-us/help/2978092nal for a while and than move up again.
- */
-void resetBaseComponent(void);
 
 
 #ifdef __cplusplus
@@ -250,7 +192,6 @@ extern SERCOM sercom5;
 
 extern Uart Serial1;
 extern Uart SerialDust;
-#define SIGFOX_SPI SPI1;
 
 #endif
 
@@ -274,17 +215,6 @@ extern Uart SerialDust;
 // Serial has no physical pins broken out, so it's not listed as HARDWARE port
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
-
-
-#define LED_YELLOW_TWO_INIT  pinMode(PIN_LED_RXL, OUTPUT)
-#define LED_YELLOW_ONE_INIT  pinMode(PIN_LED_TXL, OUTPUT)
-
-
-extern uint8_t smeInitError;
-
-#define IOEXT_ERR       0b10000000
-#define IOEXT_CONF_ERR  0b01000000
-#define IOEXT_INIT_ERR  0b00100000
 
 // Alias Serial to SerialUSB
 #define Serial                      SerialUSB
