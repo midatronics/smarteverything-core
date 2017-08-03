@@ -2,6 +2,9 @@
 
 Arduino core for Smart Everything board
 
+## v3.0.0 01-Sep-2017 Release
+- Added SmartEverything IOTEAM Dustino board
+
 ## v2.2.0 23-Apr-2017 Release
 - Added SmartEverything Dragonfly board
 

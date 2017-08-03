@@ -36,8 +36,8 @@ asmeFox3.sketch.name="SmartEverything Fox3"
 asmeFox3.bootloader.name="SmartEverything Fox3 bootloader"
 asmeLion.sketch.name="SmartEverything Lion"
 asmeLion.bootloader.name="SmartEverything Lion bootloader"
-Adi5Axis.sketch.name="ADI 5Axis"
-Adi5Axis.bootloader.name="ADI 5Axis bootloader"
+dustino.sketch.name="IOTEAM Dustino"
+dustino.bootloader.name="IOTEAM Dustino bootloader"
 asmeDragonfly.sketch.name="SmartEverything Dragonfly"
 asmeDragonfly.bootloader.name="SmartEverything Dragonfly bootloader"
 
@@ -69,8 +69,8 @@ DefaultDestDir=12
 %asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
 %asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
 %asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
-%Adi5Axis.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
-%Adi5Axis.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+%dustino.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%dustino.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
 %asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
 
@@ -82,8 +82,8 @@ DefaultDestDir=12
 %asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
 %asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
 %asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
-%Adi5Axis.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
-%Adi5Axis.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+%dustino.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%dustino.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
 %asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
 
@@ -95,8 +95,8 @@ DefaultDestDir=12
 %asmeFox3.bootloader.name%=DriverInstall, USB\VID_2341&PID_E007
 %asmeLion.sketch.name%=DriverInstall, USB\VID_2341&PID_E00A&MI_00
 %asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
-%Adi5Axis.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
-%Adi5Axis.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
+%dustino.sketch.name%=DriverInstall, USB\VID_2341&PID_E00C&MI_00
+%dustino.bootloader.name%=DriverInstall, USB\VID_2341&PID_E00B
 %asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
 

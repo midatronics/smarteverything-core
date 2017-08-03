@@ -23,8 +23,8 @@
   #include "board_definitions_asme_lion.h"
 #elif defined(BOARD_ID_asme_dragonfly)
   #include "board_definitions_asme_dragonfly.h"
-#elif defined(BOARD_ID_adi)
-  #include "board_definitions_adi.h"
+#elif defined(BOARD_ID_dustino)
+  #include "board_definitions_dustino.h"
 #else
   #error You must define a BOARD_ID and add the corresponding definitions in board_definitions.h
 #endif
