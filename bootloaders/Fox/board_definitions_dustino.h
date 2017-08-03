@@ -73,10 +73,10 @@
 #define BOARD_LED_PIN                     (20)
 
 // No RX/TX led
-//#define BOARD_LEDRX_PORT
-//#define BOARD_LEDRX_PIN
+#define BOARD_LEDRX_PORT	31
+#define BOARD_LEDRX_PIN		31
 
-//#define BOARD_LEDTX_PORT
-//#define BOARD_LEDTX_PIN
+#define BOARD_LEDTX_PORT	31
+#define BOARD_LEDTX_PIN		31
 
 #endif // _BOARD_DEFINITIONS_H_
