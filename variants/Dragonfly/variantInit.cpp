@@ -93,28 +93,5 @@ void initVariant() {
 
     initSigfox();
     initDust();
-    initWiFi();
-    /*
-    // initialize The EXT_PWR Pin as input
-    // it will be HIGH when the battery is not connected
-    pinMode(PIN_EXT_PWR, INPUT_PULLUP); 
-    
-    // initialize the battery monitor
-    pinMode(PIN_BATT_MON, INPUT);
-    pinMode(PIN_LIPO_MON, INPUT);
-    pinMode(PIN_ENA_MON, OUTPUT);
-    digitalWrite(PIN_ENA_MON, LOW);  // disable the battery monitor
-    
-    //initialize the reset pin   
-    pinMode(PIN_RESET_COMPONENT, OUTPUT);
-    digitalWrite(PIN_RESET_COMPONENT, HIGH);
-    
-    
-    // reset the base component
-    resetBaseComponent();
-    
-    // put GPS in stdby to save power
-    setInitGPS();
-
-    ioExtenderInit(); */
+    initWiFi();    
 }
