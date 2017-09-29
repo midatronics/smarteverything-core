@@ -33,11 +33,10 @@ void resetComponent(int pin) {
 void initDust()
 {
     pinMode(DUST_RESET_PIN, OUTPUT); 
-    digitalWrite(DUST_RESET_PIN, HIGH);
     
     pinMode(DUST_TIM_EN_PIN, OUTPUT); 
     digitalWrite(DUST_TIM_EN_PIN, HIGH);
-    delay(10); // wait 10 mSec.
+	
     resetComponent(DUST_RESET_PIN);
 }
 
