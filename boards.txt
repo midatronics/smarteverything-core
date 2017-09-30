@@ -140,6 +140,7 @@ adi_native.upload.native_usb=true
 adi_native.build.mcu=cortex-m0plus
 adi_native.build.f_cpu=48000000L
 adi_native.build.usb_product="IOTEAM Dustino"
+SmartEverything_Fox3_native.build.board=IOTEAM_SAMD_DUSTINO
 adi_native.build.usb_manufacturer="Arrow"
 adi_native.build.board=SAMD_ADI
 adi_native.build.core=arduino:arduino
