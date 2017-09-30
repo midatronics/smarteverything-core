@@ -154,7 +154,7 @@ const PinDescription g_APinDescription[]=
  * | 31         |                  |  PB09  | TXD             | 	  
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
-  { PORTB,  9, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER,      EXTERNAL_INT_NONE    },
+  { PORTB,  9, PIO_OUTPUT, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // used as output only
 /* END DUSTINO SPECIFIC  */
 
 };
