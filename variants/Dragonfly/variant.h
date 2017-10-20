@@ -221,7 +221,7 @@ void ledYellowTwoLight(uint32_t value);
  *      DUST
  *      WiFi
  * The reset is executed by a LOW signal.
- * The function move LOW the sighttps://support.microsoft.com/en-us/help/2978092nal for a while and than move up again.
+ * The function move LOW the signal for a while and than move up again.
  */
 void resetBaseComponent(void);
 
