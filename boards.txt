@@ -122,35 +122,6 @@ SmartEverything_Dragonfly_native.build.variant_system_lib=
 SmartEverything_Dragonfly_native.build.vid=0x2341 
 SmartEverything_Dragonfly_native.build.pid=0xe006
 
-
-
-# IOTEAM Dustino
-# ---------------------------------------
-dustino_native.name=IOTEAM Dustino (Native USB Port)
-dustino_native.vid.0=0x2341
-dustino_native.pid.0=0xe00B
-dustino_native.vid.1=0x2341
-dustino_native.pid.1=0xe00C
-dustino_native.upload.tool=arduino:bossac
-dustino_native.upload.protocol=sam-ba
-dustino_native.upload.maximum_size=262144
-dustino_native.upload.use_1200bps_touch=true
-dustino_native.upload.wait_for_upload_port=true
-dustino_native.upload.native_usb=true
-dustino_native.build.mcu=cortex-m0plus
-dustino_native.build.f_cpu=48000000L
-dustino_native.build.usb_product="IOTEAM Dustino"
-dustino_native.build.board=IOTEAM_SAMD_DUSTINO
-dustino_native.build.usb_manufacturer="Arrow"
-dustino_native.build.core=arduino:arduino
-dustino_native.build.extra_flags=-D__SAMD21G18A__ {build.usb_flags}
-dustino_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
-dustino_native.build.openocdscript=openocd_scripts/arduino_zero.cfg
-dustino_native.build.variant=Dustino
-dustino_native.build.vid=0x2341
-dustino_native.build.pid=0xe00C
-
-
 #NetTrotter Unit
 # ---------------------------------------
 NetTrotter_native.name=SmartTutto (Native USB Port)
