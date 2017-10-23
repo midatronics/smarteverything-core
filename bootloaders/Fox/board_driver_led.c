@@ -17,20 +17,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#if defined(BOARD_ID_asme_fox)
-  #include "board_definitions_asme_fox.h"
-#elif defined(BOARD_ID_asme_lion)
-  #include "board_definitions_asme_lion.h"
-#elif defined(BOARD_ID_asme_dragonfly)
-  #include "board_definitions_asme_dragonfly.h"
-#elif defined(BOARD_ID_asme_tiger)
-  #include "board_definitions_asme_tiger.h"
-#else
-  #error You must define a BOARD_ID and add the corresponding definitions in board_definitions.h
-#endif
+#include "board_driver_led.h"
 
-// Common definitions
-// ------------------
-
-#define BOOT_PIN_MASK (1U << (BOOT_LOAD_PIN & 0x1f))
 
