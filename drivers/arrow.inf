@@ -38,7 +38,8 @@ asmeLion.sketch.name="SmartEverything Lion"
 asmeLion.bootloader.name="SmartEverything Lion bootloader"
 asmeDragonfly.sketch.name="SmartEverything Dragonfly"
 asmeDragonfly.bootloader.name="SmartEverything Dragonfly bootloader"
-
+asmeTiger.sketch.name="SmartEverything Tiger"
+asmeTiger.bootloader.name="SmartEverything Tiger bootloader"
 [DefaultInstall]
 CopyINF=arrow.inf
 
@@ -69,6 +70,8 @@ DefaultDestDir=12
 %asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
 %asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+%asmeTiger.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
+%asmeTiger.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
 
 [DeviceList.NTamd64]
 %bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
@@ -80,6 +83,8 @@ DefaultDestDir=12
 %asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
 %asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+%asmeTiger.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
+%asmeTiger.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
 
 [DeviceList.NTia64]
 %bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
@@ -91,6 +96,8 @@ DefaultDestDir=12
 %asmeLion.bootloader.name%=DriverInstall, USB\VID_2341&PID_E009
 %asmeDragonfly.sketch.name%=DriverInstall, USB\VID_2341&PID_E006&MI_00
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
+%asmeTiger.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
+%asmeTiger.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
 
 [DriverInstall]
 include=mdmcpq.inf,usb.inf
