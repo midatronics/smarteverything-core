@@ -2,7 +2,7 @@
 
 Arduino core for Smart Everything board
 
-## v3.0.0 23-Apr-2017 Release
+## v3.0.0 04-Nov-2017 Release
 - Added SmartEverything Dragonfly board
 - Added SmartEverything Tiger board
 
