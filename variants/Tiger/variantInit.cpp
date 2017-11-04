@@ -18,6 +18,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 #include <Arduino.h>
+#include "internalI2C.h"
+
 
 static const uint32_t TWI_CLOCK_SME = 100000;
 

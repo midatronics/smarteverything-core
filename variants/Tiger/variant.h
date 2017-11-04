@@ -176,12 +176,19 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 /*
  * Wire Interfaces
  */
+/*----Common Arduino  ----*/
 #define WIRE_INTERFACES_COUNT 1
 
 #define PIN_WIRE_SDA         (20u)
 #define PIN_WIRE_SCL         (21u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
+
+/*----Specific Tiger ----*/
+#define TIGER_PIN_WIRE_SDA         (47u)
+#define TIGER_PIN_WIRE_SCL         (48u)
+#define TIGER_PERIPH_WIRE          sercom2
+#define TIGER_WIRE_IT_HANDLER      SERCOM2_Handler
 
 /*
  * USB
@@ -241,6 +248,9 @@ extern SERCOM sercom5;
 
 extern Uart Serial1;
 extern Uart SerialBLE;
+
+typedef class TwoWire;
+extern TwoWire WireTiger;
 
 #endif
 

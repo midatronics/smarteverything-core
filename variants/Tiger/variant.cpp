@@ -17,6 +17,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #include <Arduino.h>
+#include <Wire.h>
 
 uint8_t smeInitError;
 
@@ -211,7 +212,7 @@ const PinDescription g_APinDescription[]=
   { PORTB,  16, PIO_SERCOM, (PIN_ATTR_DIGITAL), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_14 },
   { PORTB,  17, PIO_SERCOM, (PIN_ATTR_DIGITAL), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE },
 	  
-	  /*
+/*
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  * |            | I2C Arbiter      |        |                 |
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
@@ -219,6 +220,17 @@ const PinDescription g_APinDescription[]=
  * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
  */
   { PORTB,  07, PIO_DIGITAL, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE },
+
+/*
+ * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
+ * |            | Wire             |        |                 |
+ * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
+ * | 47         | SDA              |  PA12  | SDA             | EIC/EXTINT[6]                        PTC/X[10] *SERCOM3/PAD[0] SERCOM5/PAD[0] TC4/WO[0] TCC0/WO[4]
+ * | 48         | SCL              |  PA13  | SCL             | EIC/EXTINT[7]                        PTC/X[11] *SERCOM3/PAD[1] SERCOM5/PAD[1] TC4/WO[1] TCC0/WO[5]
+ * +------------+------------------+--------+-----------------+--------------------------------------------------------------------------------------------------------
+ */
+  { PORTA, 12, PIO_SERCOM, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SDA: SERCOM3/PAD[0]
+  { PORTA, 13, PIO_SERCOM, PIN_ATTR_DIGITAL, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_7 }, // SCL: SERCOM3/PAD[1]
 
 };
   
@@ -268,22 +280,8 @@ void ledYellowOneLight(uint32_t value)   {
 
 
 
-/*
-Output signal which indicates the status of the radio. 
-Set to VCC during radio transmission or as soon as a radio frame is detected with correct synchronization word. 
-The signals returns to GND at the end of transmission or as soon as the frame reception is finished.
-*/
-// SEVE ...
-bool isSFXMsgOnAir(void) {
-//    return digitalRead(PIN_SIGFOX_RADIO_STS);
-    return false;
-}
+TwoWire WireTiger(&PERIPH_WIRE, TIGER_PIN_WIRE_SDA, TIGER_PIN_WIRE_SCL);
 
-void sfxSleep(void){
-//    digitalWrite(PIN_SIGFOX_WAKEUP, HIGH); // Put SFX in Sleep
+void TIGER_WIRE_IT_HANDLER(void) {
+	WireTiger.onService();
 }
-
-void sfxWakeup(void){
-//     digitalWrite(PIN_SIGFOX_WAKEUP, LOW);   // Wakeup SFX
-}
-// ... SEVE
