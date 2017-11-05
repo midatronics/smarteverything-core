@@ -111,7 +111,7 @@ static const uint8_t DAC0 = PIN_DAC0;
 #define ADC_RESOLUTION		12
 
 // Other pins
-#define PIN_ATN              (50ul)
+#define PIN_ATN              (48ul)
 static const uint8_t ATN = PIN_ATN;
 
 /*
