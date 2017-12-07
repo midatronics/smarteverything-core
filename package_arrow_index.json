@@ -118,7 +118,7 @@
         {
           "name": "Arrow Boards",
           "architecture": "samd",
-          "version": "2.1.0",
+          "version": "3.0.0",
           "category": "Partner",
           "url": "http://downloads.arduino.cc/cores/Arrow-samd-2.1.0.tar.gz",
           "archiveFileName": "Arrow-samd-2.1.0.tar.gz",
@@ -136,9 +136,6 @@
             },
             {
               "name": "SmartEverything Dragonfly"
-            },
-            {
-              "name": "Analog ADI"
             },
             {
               "name": "SmartTutto"
