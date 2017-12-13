@@ -104,8 +104,8 @@
           "category": "Partner",
           "url": "https://github.com/axelelettronica/smarteverything-core/releases/download/v3.0.0/smarteverything3_0_0.tar.gz",
           "archiveFileName": "smarteverything3_0_0.tar.gz",
-          "checksum": "SHA-256:0f9e67cf8616484a906dc03565d6b39399f458c5799331f665b2295fa4c5d680",
-          "size": "796457",
+          "checksum": "SHA-256:b10b029375ce065729fec4acf49f82ed799eae3f173af075510a1a076c41ff51",
+          "size": "795306",
           "boards": [
             {
               "name": "SmartEverything Fox"
