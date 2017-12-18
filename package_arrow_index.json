@@ -100,10 +100,10 @@
         {
           "name": "Arrow Boards",
           "architecture": "samd",
-          "version": "3.0.0",
+          "version": "3.0.1",
           "category": "Partner",
-          "url": "https://github.com/axelelettronica/smarteverything-core/releases/download/v3.0.0/smarteverything3_0_0.tar.gz",
-          "archiveFileName": "smarteverything3_0_0.tar.gz",
+          "url": "https://github.com/axelelettronica/smarteverything-core/releases/download/V3.0.1/smarteverything3_0_1.tar.gz",
+          "archiveFileName": "smarteverything3_0_1.tar.gz",
           "checksum": "SHA-256:f3abf6d28f5caeb0c01bc29262400054e043e13952bf3f336bea26d9b74bfe28",
           "size": "791305",
           "boards": [
