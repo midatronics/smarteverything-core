@@ -107,7 +107,7 @@ static const uint8_t A5  = PIN_A5 ;
 #define ADC_RESOLUTION		12
 
 // Other pins
-#define PIN_ATN              (41ul)
+#define PIN_ATN              (45ul)
 static const uint8_t ATN = PIN_ATN;
 
 /*
@@ -119,7 +119,6 @@ static const uint8_t ATN = PIN_ATN;
 #define PAD_SERIAL1_TX       (UART_TX_PAD_2)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_3)
 
-#define USER_BUTTON           (PIN_A3)  // FAKE PIN
 
 /*
  * SPI Interfaces
@@ -140,7 +139,7 @@ static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
 
-// SPI1: Connected WiFi
+// SPI1: Connected to  WiFi and KW41
 #define USE_SPI1
 #define PIN_SPI1_MISO (31u)
 #define PIN_SPI1_MOSI (32u)
@@ -149,12 +148,22 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PAD_SPI1_TX   SPI_PAD_2_SCK_3
 #define PAD_SPI1_RX   SERCOM_RX_PAD_0
 
+
 // WiFi Module
 #define WIFI_SS_PIN        (34ul) // PB11
 #define WIFI_IRQN_PIN      (35ul) // PB30
 #define WIFI_WAKE_PIN      (36ul) // PB31
 #define WIFI_CHIP_EN_PIN   (37ul) // PB0
 #define WIFI_RES_PIN       (38ul) // PB1
+
+//KW41 Module
+#define KW41_SS_PIN        (41ul) // PB13
+#define KW41_RES_PIN       (42ul) // PB04
+
+#define PIN_KW41_RX        (43ul)
+#define PIN_KW41_TX        (44ul)
+#define PAD_KW41_TX        (UART_TX_PAD_0)
+#define PAD_KW41_RX        (SERCOM_RX_PAD_1)
 
 // Needed for WINC1501B (WiFi101) library
 // --------------------------------------
@@ -164,31 +173,24 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define WINC1501_SPI           SPI1
 #define WINC1501_SPI_CS_PIN    WIFI_SS_PIN
 
-
-// KW41_BLE
-#define PIN_KW41_TX           (44ul)
-#define PIN_KW41_RX           (45ul)
-#define PAD_KW41_TX           (UART_TX_PAD_0)
-#define PAD_KW41_RX           (SERCOM_RX_PAD_1)
-#define KW41_RESET_PIN        (43ul)
-
-
 /*
  * Wire Interfaces
  */
-/*----Common Arduino  ----*/
-#define WIRE_INTERFACES_COUNT 1
+#define WIRE_INTERFACES_COUNT 2
 
 #define PIN_WIRE_SDA         (20u)
 #define PIN_WIRE_SCL         (21u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
 
-/*----Specific Tiger ----*/
-#define TIGER_PIN_WIRE_SDA         (47u)
-#define TIGER_PIN_WIRE_SCL         (48u)
-#define TIGER_PERIPH_WIRE          sercom2
-#define TIGER_WIRE_IT_HANDLER      SERCOM2_Handler
+/*
+ * Wire1 Interfaces
+ */
+
+#define PIN_WIRE1_SDA         (39u)
+#define PIN_WIRE1_SCL         (40u)
+#define PERIPH_WIRE1          sercom2
+#define WIRE1_IT_HANDLER      SERCOM2_Handler
 
 /*
  * USB
@@ -197,7 +199,7 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PIN_USB_DM           (29ul)
 #define PIN_USB_DP           (30ul)
 
-#define I2C_A_RSTN			 (46u)
+#define I2C_A_RSTN           (47u)
 
 /*
     Yellow Led wrapper function
@@ -216,10 +218,11 @@ void ledYellowTwoLight(uint32_t value);
 
 /*
  * The function resets all the component mounted on the base 
- *      BLE
  *      WiFi
+ *      KW41
+ *
  * The reset is executed by a LOW signal.
- * The function move LOW the signal for a while and than move up again.
+ * The function move LOW the sighttps://support.microsoft.com/en-us/help/2978092nal for a while and than move up again.
  */
 void resetBaseComponent(void);
 
@@ -247,10 +250,7 @@ extern SERCOM sercom4;
 extern SERCOM sercom5;
 
 extern Uart Serial1;
-extern Uart SerialBLE;
-
-typedef class TwoWire;
-extern TwoWire WireTiger;
+extern Uart SerialKW41;
 
 #endif
 

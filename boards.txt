@@ -124,7 +124,7 @@ SmartEverything_Dragonfly_native.build.pid=0xe006
 
 #Tiger Unit
 # ---------------------------------------
-Tiger_native.name=Tiger (Native USB Port)
+Tiger_native.name=SmartEverything Tiger (Native USB Port)
 Tiger_native.vid.0=0x2341
 Tiger_native.pid.0=0xe003
 Tiger_native.vid.1=0x2341
@@ -137,7 +137,7 @@ Tiger_native.upload.wait_for_upload_port=true
 Tiger_native.upload.native_usb=true
 Tiger_native.build.mcu=cortex-m0plus
 Tiger_native.build.f_cpu=48000000L
-Tiger_native.build.usb_product="Tiger"
+Tiger_native.build.usb_product="SmartEverything Tiger"
 Tiger_native.build.usb_manufacturer="Axelelettronica"
 Tiger_native.build.board=SAMD_SMARTEVERYTHING_TIGER
 Tiger_native.build.core=arduino:arduino

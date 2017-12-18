@@ -31,19 +31,6 @@ void resetComponent(int pin) {
     digitalWrite(pin, HIGH);
 }
 
-void initKW41()
-{
-	pinMode(KW41_RESET_PIN, OUTPUT);
-	delay(10); // wait 10 mSec.
-	resetComponent(KW41_RESET_PIN);
-}
-
-void initI2CArbiter()
-{
-    pinMode(I2C_A_RSTN, OUTPUT); 
-    delay(10); // wait 10 mSec.
-    resetComponent(I2C_A_RSTN);
-}
 
 void initWiFi()
 {
@@ -58,12 +45,30 @@ void initWiFi()
     pinMode(WIFI_WAKE_PIN, OUTPUT); 
     digitalWrite(WIFI_WAKE_PIN, HIGH);
 
-        
     pinMode(WIFI_CHIP_EN_PIN, OUTPUT); 
     digitalWrite(WIFI_CHIP_EN_PIN, HIGH);
     
     delay(10); // wait 10 mSec.
     resetComponent(WIFI_RES_PIN);
+}
+
+void initKW41()
+{
+    pinMode(KW41_RES_PIN, OUTPUT); 
+    digitalWrite(KW41_RES_PIN, HIGH);
+    
+    pinMode(KW41_SS_PIN, OUTPUT); 
+    digitalWrite(KW41_SS_PIN, HIGH);
+    
+    delay(10); // wait 10 mSec.
+    resetComponent(KW41_RES_PIN);
+}
+
+void initI2CArbiter()
+{
+	pinMode(I2C_A_RSTN, OUTPUT);
+	delay(10); // wait 10 mSec.
+	resetComponent(I2C_A_RSTN);
 }
 
 
@@ -76,8 +81,7 @@ void initVariant() {
     // Light Led OFF
     ledYellowOneLight(LOW);
     ledYellowTwoLight(LOW);
-
-	initI2CArbiter();
+    initI2CArbiter();
     initKW41();
     initWiFi();    
 }
