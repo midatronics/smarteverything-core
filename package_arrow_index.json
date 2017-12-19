@@ -2,9 +2,9 @@
   "packages": [
     {
       "name": "Arrow",
-      "maintainer": "Axel Elettronica S.r.l.",
-      "websiteURL": "http://axelelettronica.it/",
-      "email": "development@axelelettronica.it",
+      "maintainer": "IOTEAM S.r.l.",
+      "websiteURL": "http://ioteam.it/",
+      "email": "rnd@ioteam.it",
       "help": {
         "online": "http://www.arrowsmarteverything.com/support/"
       },
