@@ -79,4 +79,8 @@
 #define BOARD_LEDTX_PORT	31
 #define BOARD_LEDTX_PIN		31
 
+
+#define BOARD_RESET_KW41_PORT                  (1)
+#define BOARD_RESET_KW42_PIN                   (4)
+
 #endif // _BOARD_DEFINITIONS_H_

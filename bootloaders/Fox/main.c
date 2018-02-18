@@ -41,6 +41,12 @@ static volatile bool main_b_cdc_enable = false;
  */
 static void check_start_application(void)
 {
+
+#if defined(BOARD_ID_asme_tiger)
+  Reset_init();
+  Reset_on();
+#endif
+
 //  LED_init();
 //  LED_off();
 

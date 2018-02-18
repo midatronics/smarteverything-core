@@ -23,6 +23,11 @@
 #include <sam.h>
 #include "board_definitions.h"
 
+#if defined(BOARD_ID_asme_tiger)
+inline void Reset_init(void) { PORT->Group[BOARD_RESET_PORT].DIRSET.reg = (1<<BOARD_RESET_PIN); }
+inline void Reset_on(void) { PORT->Group[BOARD_RESET_PORT].OUTSET.reg = (1<<BOARD_RESET_PIN); }
+inline void Reset_off(void) { PORT->Group[BOARD_RESET_PORT].OUTCLR.reg = (1<<BOARD_RESET_PIN); }
+#endif
 inline void LED_init(void) { PORT->Group[BOARD_LED_PORT].DIRSET.reg = (1<<BOARD_LED_PIN); }
 inline void LED_on(void) { PORT->Group[BOARD_LED_PORT].OUTSET.reg = (1<<BOARD_LED_PIN); }
 inline void LED_off(void) { PORT->Group[BOARD_LED_PORT].OUTCLR.reg = (1<<BOARD_LED_PIN); }
