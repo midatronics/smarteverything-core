@@ -23,11 +23,11 @@
 /*
  * USB device definitions
  */
-#define STRING_PRODUCT "DUSTINO"
-#define USB_VID_HIGH   0x23
-#define USB_VID_LOW    0x41
-#define USB_PID_HIGH   0xE0
-#define USB_PID_LOW    0x0B
+#define STRING_PRODUCT "SmartEverything Bee"
+#define USB_VID_HIGH   0x04
+#define USB_VID_LOW    0xD8
+#define USB_PID_HIGH   0xEE
+#define USB_PID_LOW    0x57
 
 /*
  * If BOOT_DOUBLE_TAP_ADDRESS is defined the bootloader is started by
@@ -49,10 +49,11 @@
 #define BOOT_USART_BUS_CLOCK_INDEX        PM_APBCMASK_SERCOM0
 #define BOOT_USART_PER_CLOCK_INDEX        GCLK_ID_SERCOM0_CORE
 #define BOOT_USART_PAD_SETTINGS           UART_RX_PAD3_TX_PAD2
-#define BOOT_USART_PAD3                   PINMUX_PA11C_SERCOM0_PAD3
-#define BOOT_USART_PAD2                   PINMUX_PA10C_SERCOM0_PAD2
+#define BOOT_USART_PAD3                   PINMUX_PA11C_SERCOM0_PAD3 
+#define BOOT_USART_PAD2                   PINMUX_PA10C_SERCOM0_PAD2 
 #define BOOT_USART_PAD1                   PINMUX_UNUSED
 #define BOOT_USART_PAD0                   PINMUX_UNUSED
+
 
 /* Master clock frequency */
 #define CPU_FREQUENCY                     (48000000ul)
@@ -68,15 +69,13 @@
 /*
  * LEDs definitions
  */
-// PA20 (digital pin 6)
-#define BOARD_LED_PORT                    (0)
-#define BOARD_LED_PIN                     (20)
+#define BOARD_LED_PORT                    (0)  
+#define BOARD_LED_PIN                     (17)  
 
-// No RX/TX led
-#define BOARD_LEDRX_PORT	31
-#define BOARD_LEDRX_PIN		31
+#define BOARD_LEDRX_PORT                  (1) 
+#define BOARD_LEDRX_PIN                   (3)  
 
-#define BOARD_LEDTX_PORT	31
-#define BOARD_LEDTX_PIN		31
+#define BOARD_LEDTX_PORT                  (0) 
+#define BOARD_LEDTX_PIN                   (27) 
 
 #endif // _BOARD_DEFINITIONS_H_

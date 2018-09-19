@@ -38,6 +38,9 @@ asmeDragonfly.sketch.name="SmartEverything Dragonfly"
 asmeDragonfly.bootloader.name="SmartEverything Dragonfly bootloader"
 asmeTiger.sketch.name="SmartEverything Tiger"
 asmeTiger.bootloader.name="SmartEverything Tiger bootloader"
+asmeBee.sketch.name="SmartEverything Bee"
+asmeBee.bootloader.name="SmartEverything Bee bootloader"
+
 [DefaultInstall]
 CopyINF=arrow.inf
 
@@ -49,7 +52,7 @@ Provider=%ManufacturerName%
 DriverPackageDisplayName=%DriverPackageDisplayName%
 CatalogFile=arrow.cat
 ; DriverVer date is MM/DD/YYYY
-DriverVer=10/21/2016,1.0.0.0
+DriverVer=26/08/2018,2.0.0.0
 
 [Manufacturer]
 %ManufacturerName%=DeviceList, NTamd64, NTia64
@@ -68,6 +71,8 @@ DefaultDestDir=12
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
 %asmeTiger.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
 %asmeTiger.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
+%asmeBee.sketch.name%=DriverInstall, USB\VID_04D8&PID_EE53&MI_00
+%asmeBee.bootloader.name%=DriverInstall, USB\VID_04D8&PID_EE57
 
 [DeviceList.NTamd64]
 %bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
@@ -79,6 +84,8 @@ DefaultDestDir=12
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
 %asmeTiger.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
 %asmeTiger.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
+%asmeBee.sketch.name%=DriverInstall, USB\VID_04D8&PID_EE53&MI_00
+%asmeBee.bootloader.name%=DriverInstall, USB\VID_04D8&PID_EE57
 
 [DeviceList.NTia64]
 %bossa.name%=DriverInstall, USB\VID_03EB&PID_6124
@@ -90,6 +97,8 @@ DefaultDestDir=12
 %asmeDragonfly.bootloader.name%=DriverInstall, USB\VID_2341&PID_E005
 %asmeTiger.sketch.name%=DriverInstall, USB\VID_2341&PID_E004&MI_00
 %asmeTiger.bootloader.name%=DriverInstall, USB\VID_2341&PID_E003
+%asmeBee.sketch.name%=DriverInstall, USB\VID_04D8&PID_EE53&MI_00
+%asmeBee.bootloader.name%=DriverInstall, USB\VID_04D8&PID_EE57
 
 [DriverInstall]
 include=mdmcpq.inf,usb.inf

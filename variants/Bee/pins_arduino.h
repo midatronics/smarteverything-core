@@ -1,6 +1,5 @@
 /*
-  Copyright (c) 2015 Arduino LLC.  All right reserved.
-  Copyright (c) 2015 Atmel Corporation/Thibaut VIARD.  All right reserved.
+  Copyright (c) 2014-2015 Arduino LLC.  All right reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -17,22 +16,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#if defined(BOARD_ID_asme_fox)
-  #include "board_definitions_asme_fox.h"
-#elif defined(BOARD_ID_asme_lion)
-  #include "board_definitions_asme_lion.h"
-#elif defined(BOARD_ID_asme_dragonfly)
-  #include "board_definitions_asme_dragonfly.h"
-#elif defined(BOARD_ID_asme_tiger)
-  #include "board_definitions_asme_tiger.h"
-#elif defined(BOARD_ID_asme_bee)
-  #include "board_definitions_asme_bee.h"
-#else
-  #error You must define a BOARD_ID and add the corresponding definitions in board_definitions.h
-#endif
-
-// Common definitions
-// ------------------
-
-#define BOOT_PIN_MASK (1U << (BOOT_LOAD_PIN & 0x1f))
+// API compatibility
+#include "variant.h"
 

@@ -22,5 +22,6 @@ DOES NOT COPY the following files, which shall be use the SmartEverything versio
 Once You copy all the required file just run the scritp
  `build_all_bootloaders.sh`.
 
+make BOARD_ID=asme_bee NAME=bee_boot CPU=__SAMD21J18A__
 
    

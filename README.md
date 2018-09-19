@@ -2,6 +2,12 @@
 
 Arduino core for Smart Everything board
 
+## v5.0.0 04-Nov-2017 Release
+- Added SmartEverything Bee board
+
+## v4.0.0 04-Dec-2017 Release
+- Fix SmartEverything Tiger board
+
 ## v3.0.0 04-Nov-2017 Release
 - Added SmartEverything Dragonfly board
 - Added SmartEverything Tiger board

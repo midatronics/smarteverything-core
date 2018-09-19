@@ -41,6 +41,31 @@ SmartEverything_Fox_native.build.variant_system_lib=
 SmartEverything_Fox_native.build.vid=0x2341
 SmartEverything_Fox_native.build.pid=0xe002
 
+SmartEverything_Fox3_native.name=SmartEverything Fox3 (Native USB Port) 
+SmartEverything_Fox3_native.vid.0=0x2341 
+SmartEverything_Fox3_native.pid.0=0xe007 
+SmartEverything_Fox3_native.vid.1=0x2341 
+SmartEverything_Fox3_native.pid.1=0xe008 
+SmartEverything_Fox3_native.upload.tool=arduino:bossac 
+SmartEverything_Fox3_native.upload.protocol=sam-ba 
+SmartEverything_Fox3_native.upload.maximum_size=262144 
+SmartEverything_Fox3_native.upload.use_1200bps_touch=true 
+SmartEverything_Fox3_native.upload.wait_for_upload_port=true 
+SmartEverything_Fox3_native.upload.native_usb=true 
+SmartEverything_Fox3_native.build.mcu=cortex-m0plus 
+SmartEverything_Fox3_native.build.f_cpu=48000000L 
+SmartEverything_Fox3_native.build.usb_product="SmartEverything Fox3" 
+SmartEverything_Fox3_native.build.usb_manufacturer="Arrows" 
+SmartEverything_Fox3_native.build.board=SAMD_SMARTEVERYTHING_FOX 
+SmartEverything_Fox3_native.build.core=arduino:arduino 
+SmartEverything_Fox3_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Fox3_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Fox3_native.build.openocdscript= 
+SmartEverything_Fox3_native.build.variant=Fox3
+SmartEverything_Fox3_native.build.variant_system_lib= 
+SmartEverything_Fox3_native.build.vid=0x2341 
+SmartEverything_Fox3_native.build.pid=0xe008 
+
 
 #Lion Unit
 # ---------------------------------------
@@ -97,6 +122,33 @@ SmartEverything_Dragonfly_native.build.variant_system_lib=
 SmartEverything_Dragonfly_native.build.vid=0x2341 
 SmartEverything_Dragonfly_native.build.pid=0xe006
 
+#Bee Unit
+# ---------------------------------------
+SmartEverything_Bee_native.name=SmartEverything Bee (Native USB Port) 
+SmartEverything_Bee_native.vid.0=0x04d8 
+SmartEverything_Bee_native.pid.0=0xee57
+SmartEverything_Bee_native.vid.1=0x04d8
+SmartEverything_Bee_native.pid.1=0xee53
+SmartEverything_Bee_native.upload.tool=arduino:bossac 
+SmartEverything_Bee_native.upload.protocol=sam-ba 
+SmartEverything_Bee_native.upload.maximum_size=262144 
+SmartEverything_Bee_native.upload.use_1200bps_touch=true 
+SmartEverything_Bee_native.upload.wait_for_upload_port=true 
+SmartEverything_Bee_native.upload.native_usb=true 
+SmartEverything_Bee_native.build.mcu=cortex-m0plus 
+SmartEverything_Bee_native.build.f_cpu=48000000L 
+SmartEverything_Bee_native.build.usb_product="SmartEverything Bee" 
+SmartEverything_Bee_native.build.usb_manufacturer="Arrow" 
+SmartEverything_Bee_native.build.board=SAMD_SMARTEVERYTHING_BEE
+SmartEverything_Bee_native.build.core=arduino:arduino 
+SmartEverything_Bee_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
+SmartEverything_Bee_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
+SmartEverything_Bee_native.build.openocdscript= 
+SmartEverything_Bee_native.build.variant=Bee
+SmartEverything_Bee_native.build.variant_system_lib= 
+SmartEverything_Bee_native.build.vid=0x04d8 
+SmartEverything_Bee_native.build.pid=0xee53
+
 #Tiger Unit
 # ---------------------------------------
 Tiger_native.name=SmartEverything Tiger (Native USB Port)
@@ -124,32 +176,6 @@ Tiger_native.build.variant_system_lib=
 Tiger_native.build.vid=0x2341
 Tiger_native.build.pid=0xe004
 
-#Bee Unit
-# ---------------------------------------
-SmartEverything_Fox3_native.name=SmartEverything Bee (Native USB Port) 
-SmartEverything_Fox3_native.vid.0=0x2341 
-SmartEverything_Fox3_native.pid.0=0xe007 
-SmartEverything_Fox3_native.vid.1=0x2341 
-SmartEverything_Fox3_native.pid.1=0xe008 
-SmartEverything_Fox3_native.upload.tool=arduino:bossac 
-SmartEverything_Fox3_native.upload.protocol=sam-ba 
-SmartEverything_Fox3_native.upload.maximum_size=262144 
-SmartEverything_Fox3_native.upload.use_1200bps_touch=true 
-SmartEverything_Fox3_native.upload.wait_for_upload_port=true 
-SmartEverything_Fox3_native.upload.native_usb=true 
-SmartEverything_Fox3_native.build.mcu=cortex-m0plus 
-SmartEverything_Fox3_native.build.f_cpu=48000000L 
-SmartEverything_Fox3_native.build.usb_product="SmartEverything Bee" 
-SmartEverything_Fox3_native.build.usb_manufacturer="Arrows" 
-SmartEverything_Fox3_native.build.board=SAMD_SMARTEVERYTHING_BEE
-SmartEverything_Fox3_native.build.core=arduino:arduino 
-SmartEverything_Fox3_native.build.extra_flags=-D__SAMD21J18A__ {build.usb_flags} 
-SmartEverything_Fox3_native.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld 
-SmartEverything_Fox3_native.build.openocdscript= 
-SmartEverything_Fox3_native.build.variant=Bee
-SmartEverything_Fox3_native.build.variant_system_lib= 
-SmartEverything_Fox3_native.build.vid=0x2341 
-SmartEverything_Fox3_native.build.pid=0xe008 
 
 #NetTrotter Unit
 # ---------------------------------------

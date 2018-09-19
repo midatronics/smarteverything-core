@@ -153,6 +153,39 @@
           "toolsDependencies": [
             
           ]
+        },
+	   {
+          "name": "Arrow Boards",
+          "architecture": "samd",
+          "version": "5.0.0",
+          "category": "Partner",
+          "url": "https://github.com/ioteamit/smarteverything-core/releases/download/V5.0.0/smarteverything5_0_0.tar.gz",
+          "archiveFileName": "smarteverything5_0_0.tar.gz",
+          "checksum": "SHA-256:daca308c0e9630ce5a276085746d34ffb042e7f2afe59b4db433f217db0f2396",
+          "size": "789399",
+          "boards": [
+            {
+              "name": "SmartEverything Fox"
+            },
+            {
+              "name": "SmartEverything Lion"
+            },
+            {
+              "name": "SmartEverything Dragonfly"
+            },
+            {
+              "name": "SmartEverything Tiger"
+            },
+		 {
+              "name": "SmartEverything Bee"
+            },
+            {
+              "name": "SmartTutto"
+            }
+          ],
+          "toolsDependencies": [
+            
+          ]
         }
       ],
       "tools": [
